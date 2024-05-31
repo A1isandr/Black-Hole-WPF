@@ -1,0 +1,21 @@
+﻿<Application x:Class="Black_Hole.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Black_Hole"
+             StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Themes/DefaultTheme.xaml"/>
+
+                <ResourceDictionary Source="/Resources/Styles/Button.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/Label.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/TextBlock.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/ScrollViewer.xaml"/>
+
+                <ResourceDictionary Source="/Resources/Images/SvgImages.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
