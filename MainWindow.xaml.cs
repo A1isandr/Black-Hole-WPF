@@ -9,10 +9,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Black_Hole.Helpers;
 using Black_Hole.MVVM.ViewModels;
 using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
-using RegExp2DFA.Helpers;
 
 namespace Black_Hole
 {

@@ -14,11 +14,11 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Black_Hole.Helpers;
 using Black_Hole.MVVM.ViewModels;
 using Black_Hole.Services;
 using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
-using RegExp2DFA.Helpers;
 
 namespace Black_Hole.MVVM.Views
 {
@@ -36,12 +36,12 @@ namespace Black_Hole.MVVM.Views
 
             ViewModel = new DashboardViewModel
             (
-                //BUG: Из за этого появляется ошибка в предпросмотре.
+                //BUG: Из-за этого появляется ошибка в предпросмотре?
                 (ParticlesService)App.ServiceProvider!.GetService(typeof(IParticlesService))!
             );
 
-            _flyOutAnimation = (Storyboard)TryFindResource("FlyOutAnimation");
-            _flyInAnimation = (Storyboard)TryFindResource("FlyInAnimation");
+            _flyOutAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.DashboardFlyOutAnimationKey);
+            _flyInAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.DashboardFlyInAnimationKey);
 
             this.WhenActivated(disposables =>
             {
@@ -75,6 +75,18 @@ namespace Black_Hole.MVVM.Views
                         viewModel => viewModel.DashboardState,
                         view => view.LockUnlockDashboardButton.Content,
                         DashboardStateToLockUnlockDashboardButtonIcon)
+                    .DisposeWith(disposables);
+
+                this.OneWayBind(ViewModel,
+                        viewModel => viewModel.SimulationState,
+                        view => view.StopStartSimulationButtonToolTip.Text,
+                        SimulationStateToStartStopButtonToolTipText)
+                    .DisposeWith(disposables);
+
+                this.OneWayBind(ViewModel,
+                        viewModel => viewModel.DashboardState,
+                        view => view.LockUnlockDashboardButtonToolTip.Text,
+                        DashboardStateToLockUnlockButtonToolTipText)
                     .DisposeWith(disposables);
 
                 this
@@ -136,6 +148,18 @@ namespace Black_Hole.MVVM.Views
             return ((GeometryDrawing)resource!).Geometry;
         }
 
+        private string? SimulationStateToStartStopButtonToolTipText(SimulationState state)
+        {
+            var resource = state switch
+            {
+                SimulationState.Running => Application.Current.FindResource(TextResourcesKeys.DashboardStopStartButtonRunningToolTipTextKey),
+                SimulationState.Stopped => Application.Current.FindResource(TextResourcesKeys.DashboardStopStartButtonStoppedToolTipTextKey),
+                _ => throw new ArgumentOutOfRangeException(nameof(state), state, "Failed to convert SimulationState to StopStartButtonToolTipText."),
+            };
+
+            return resource?.ToString();
+        }
+
         private object? DashboardStateToLockUnlockDashboardButtonIcon(DashboardState state)
         {
             var resource = state switch
@@ -146,6 +170,18 @@ namespace Black_Hole.MVVM.Views
             };
 
             return ((GeometryDrawing)resource!).Geometry;
+        }
+
+        private string? DashboardStateToLockUnlockButtonToolTipText(DashboardState state)
+        {
+            var resource = state switch
+            {
+                DashboardState.Unlocked => Application.Current.FindResource(TextResourcesKeys.DashboardLockUnlockButtonUnlockedToolTipTextKey),
+                DashboardState.Locked => Application.Current.FindResource(TextResourcesKeys.DashboardLockUnlockButtonLockedToolTipTextKey),
+                _ => throw new ArgumentOutOfRangeException(nameof(state), state, "Failed to convert DashboardState to LockUnlockButtonToolTipText."),
+            };
+
+            return resource?.ToString();
         }
     }
 }

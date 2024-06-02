@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    
+    <Style
+        TargetType="ToolTip">
+        
+        <Setter Property="HasDropShadow" Value="True"/>
+        <Setter Property="Placement" Value="Center"></Setter>
+        <Setter Property="VerticalOffset" Value="-30"/>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="ToolTip">
+                    
+                    <Grid>
+                        <Border
+                            CornerRadius="5"
+                            Background="{StaticResource ToolTipBackgroundBrush}"
+                            Padding="5">
+
+                            <Border.Effect>
+                                <DropShadowEffect 
+                                    BlurRadius="15" 
+                                    Opacity="0.6"
+                                    ShadowDepth="3" 
+                                    Direction="45"
+                                    Color="#444444"/>
+                            </Border.Effect>
+
+                            <ContentPresenter
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

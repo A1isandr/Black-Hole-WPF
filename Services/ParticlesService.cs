@@ -18,7 +18,8 @@ namespace Black_Hole.Services
 
         private readonly SourceList<Particle> _particles = new();
 
-        private readonly TimeSpan _historyInterval = TimeSpan.FromMilliseconds(100);
+        private  readonly List<Particle> _deleteCandidates = [];
+
         #endregion
 
         #region Methods
@@ -29,14 +30,24 @@ namespace Black_Hole.Services
             _particles.Add(particle);
         }
 
-        public void ClearParticles()
+        public void AddToDeleteCandidates(Particle particle)
+        {
+            _deleteCandidates.Add(particle);
+        }
+
+        public void DeleteDeleteCandidates()
+        {
+            _particles.RemoveMany(_deleteCandidates);
+        }
+
+        public void DeleteAllParticles()
         {
             _particles.Clear();
         }
 
         public IEnumerable<Particle> GetParticles()
         {
-            return _particles.Items.ToList();
+            return _particles.Items;
         }
 
         public int GetParticlesCount()

@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:help="clr-namespace:Black_Hole.Helpers"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="{x:Static help:TextResourcesKeys.DashboardStopStartButtonRunningToolTipTextKey}">Pause simulation</system:String>
+    <system:String x:Key="{x:Static help:TextResourcesKeys.DashboardStopStartButtonStoppedToolTipTextKey}">Run simulation</system:String>
+
+    <system:String x:Key="{x:Static help:TextResourcesKeys.DashboardResetButtonToolTipTextKey}">Reset simulation</system:String>
+
+    <system:String x:Key="{x:Static help:TextResourcesKeys.DashboardLockUnlockButtonLockedToolTipTextKey}">Unlock dashboard</system:String>
+    <system:String x:Key="{x:Static help:TextResourcesKeys.DashboardLockUnlockButtonUnlockedToolTipTextKey}">Lock dashboard</system:String>
+
+    <system:String x:Key="{x:Static help:TextResourcesKeys.DashboardParticleCountToolTipTextKey}">Particles</system:String>
+
+    <system:String x:Key="{x:Static help:TextResourcesKeys.ParticleCanvasSpawnParticlesTipTextBlockTextKey}">Click to spawn particles.</system:String>
+</ResourceDictionary>

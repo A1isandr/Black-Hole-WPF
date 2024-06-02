@@ -12,8 +12,11 @@
                 <ResourceDictionary Source="/Resources/Styles/Label.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/TextBlock.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/ScrollViewer.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/ToolTip.xaml"/>
 
                 <ResourceDictionary Source="/Resources/Images/SvgImages.xaml"/>
+
+                <ResourceDictionary Source="/Resources/Languages/lang.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

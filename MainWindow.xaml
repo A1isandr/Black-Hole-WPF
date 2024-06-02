@@ -4,13 +4,16 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                            xmlns:local="clr-namespace:Black_Hole"
+                           xmlns:help="clr-namespace:Black_Hole.Helpers"
                            xmlns:reactiveUi="http://reactiveui.net"
                            xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
                            xmlns:views="clr-namespace:Black_Hole.MVVM.Views"
                            x:TypeArguments="vm:MainWindowViewModel"
                            mc:Ignorable="d"
-                           Title="Black hole" 
-                           Height="600" Width="700">
+                           Title="Black hole"
+                           WindowStartupLocation="CenterScreen"
+                           Height="600" Width="700"
+                           MinHeight="600" MinWidth="700">
 
     <WindowChrome.WindowChrome>
         <WindowChrome 
@@ -24,73 +27,65 @@
         Background="{StaticResource WindowWrapperBackgroundBrush}"
         CornerRadius="0">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Grid Name="Main"
+            Panel.ZIndex="1">
 
-            <Grid Name="Main"
-                Grid.Row="1"
-                Panel.ZIndex="1">
+            <Border Name="Header"
+                    Grid.Row="0"
+                    Panel.ZIndex="5"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Background="Transparent"
+                    Padding="5, 0, 5, 0">
 
-                <Border Name="Header"
-                        Grid.Row="0"
-                        Panel.ZIndex="5"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Top"
-                        Background="Transparent"
-                        Padding="5, 0, 5, 0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
+                    <Border Name="WindowTitle"
+                            Grid.Column="0"
+                            Background="{StaticResource WindowTitleBackgroundBrush}"
+                            CornerRadius="10"
+                            HorizontalAlignment="Left"
+                            Width="Auto"
+                            Padding="10, 5, 10, 5"
+                            Margin="0, 5, 10, 5">
 
-                        <Border Name="WindowTitle"
-                                Grid.Column="0"
-                                Background="{StaticResource WindowTitleBackgroundBrush}"
-                                CornerRadius="10"
-                                HorizontalAlignment="Left"
-                                Width="Auto"
-                                Padding="10, 5, 10, 5"
-                                Margin="0, 5, 10, 5">
+                        <TextBlock 
+                            Text="{Binding  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=Title}"
+                            FontSize="14"
+                            FontWeight="ExtraBold"
+                            Foreground="{StaticResource WindowTitleForegroundBrush}"
+                            TextAlignment="Left"
+                            VerticalAlignment="Center"
+                            TextTrimming="CharacterEllipsis" />
+                    </Border>
 
-                            <TextBlock 
-                                Text="{Binding  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=Title}"
-                                FontSize="14"
-                                FontWeight="ExtraBold"
-                                Foreground="{StaticResource WindowTitleForegroundBrush}"
-                                TextAlignment="Left"
-                                VerticalAlignment="Center"
-                                TextTrimming="CharacterEllipsis" />
-                        </Border>
+                    <StackPanel 
+                        Grid.Column="1"
+                        Orientation="Horizontal">
 
-                        <StackPanel 
-                            Grid.Column="1"
-                            Orientation="Horizontal">
+                        <Button Name="MinWindowButton"
+                                Content="{Binding Geometry, Source={StaticResource {x:Static help:IconResourcesKeys.WindowMinimizeIconKey}}}"
+                                Style="{StaticResource WindowHeaderButton}"
+                                Margin="5"/>
 
-                            <Button Name="MinWindowButton"
-                                    Content="{Binding Geometry, Source={StaticResource WindowMinimizeIcon}}"
-                                    Style="{StaticResource WindowHeaderButton}"
-                                    Margin="5"/>
+                        <Button Name="MaxWindowButton"
+                                Content="{Binding Geometry, Source={StaticResource {x:Static help:IconResourcesKeys.WindowMaximizeIconKey}}}"
+                                Style="{StaticResource WindowHeaderButton}"
+                                Margin="5"/>
 
-                            <Button Name="MaxWindowButton"
-                                    Content="{Binding Geometry, Source={StaticResource WindowMaximizeIcon}}"
-                                    Style="{StaticResource WindowHeaderButton}"
-                                    Margin="5"/>
+                        <Button Name="CloseWindowButton"
+                                Content="{Binding Geometry, Source={StaticResource {x:Static help:IconResourcesKeys.CloseIconKey}}}"
+                                Style="{StaticResource CloseWindowHeaderButton}"
+                                Margin="5, 5, 0, 5"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-                            <Button Name="CloseWindowButton"
-                                    Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
-                                    Style="{StaticResource CloseWindowHeaderButton}"
-                                    Margin="5, 5, 0, 5"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <views:SimulationView x:Name="MainView"/>
-            </Grid>
+            <views:SimulationView x:Name="MainView"/>
         </Grid>
     </Border>
 </reactiveUi:ReactiveWindow>

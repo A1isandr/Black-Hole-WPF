@@ -5,6 +5,7 @@
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                                 xmlns:local="clr-namespace:Black_Hole.MVVM.Views"
                                 xmlns:views="clr-namespace:Black_Hole.MVVM.Views"
+                                xmlns:help="clr-namespace:Black_Hole.Helpers"
                                 xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
                                 xmlns:reactiveUi="http://reactiveui.net"
                                 x:TypeArguments="vm:DashboardViewModel"
@@ -31,7 +32,7 @@
     </UserControl.Style>
 
     <UserControl.Resources>
-        <Storyboard x:Key="FlyOutAnimation"
+        <Storyboard x:Key="{x:Static help:AnimationResourcesKeys.DashboardFlyOutAnimationKey}"
                     TargetName="Dashboard"
                     TargetProperty="Margin">
 
@@ -49,14 +50,14 @@
             </ThicknessAnimation>
         </Storyboard>
 
-        <Storyboard x:Key="FlyInAnimation"
+        <Storyboard x:Key="{x:Static help:AnimationResourcesKeys.DashboardFlyInAnimationKey}"
                     TargetName="Dashboard"
                     TargetProperty="Margin">
 
             <ThicknessAnimation
                 To="15, 15, 15, -34"
                 Duration="0:0:0.5"
-                BeginTime="0:0:1">
+                BeginTime="0:0:0.5">
 
                 <ThicknessAnimation.EasingFunction>
                     <ElasticEase
@@ -93,25 +94,59 @@
 
             <TextBlock x:Name="NumParticlesTextBlock"
                 Grid.Column="0"
-                FontWeight="Medium"
+                Text="0"
+                FontWeight="Bold"
                 FontSize="20"
                 TextAlignment="Center"
                 VerticalAlignment="Center"
-                Margin="10, 0, 20, 0"/>
+                Margin="10, 0, 20, 0">
+
+                <TextBlock.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-40">
+
+                        <TextBlock x:Name="NumParticlesTextBlockToolTip"
+                                   Text="{DynamicResource {x:Static help:TextResourcesKeys.DashboardParticleCountToolTipTextKey}}"
+                                   Style="{StaticResource ToolTipTextBlock}"/>
+                    </ToolTip>
+                </TextBlock.ToolTip>
+            </TextBlock>
 
             <Button x:Name="ResetSimulationButton"
                 Grid.Column="1"
                 Foreground="Black"
-                Content="{Binding Source={StaticResource RefreshIcon}, Path=Geometry}"
+                Content="{Binding Source={StaticResource {x:Static help:IconResourcesKeys.RefreshIconKey}}, Path=Geometry}"
                 Style="{StaticResource SvgButton}"
-                Margin="10, 0, 10, 0"/>
+                Margin="10, 0, 10, 0">
+
+                <Button.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-40">
+
+                        <TextBlock x:Name="ResetSimulationButtonToolTip"
+                                   Text="{DynamicResource {x:Static help:TextResourcesKeys.DashboardResetButtonToolTipTextKey}}"
+                                   Style="{StaticResource ToolTipTextBlock}"/>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
             
             <Button x:Name="StopStartSimulationButton"
                 Grid.Column="2"
                 Foreground="Black"
-                Content="{Binding Source={StaticResource PauseIcon}, Path=Geometry}"
+                Content="{Binding Source={StaticResource {x:Static help:IconResourcesKeys.PauseIconKey}}, Path=Geometry}"
                 Style="{StaticResource SvgButton}"
-                Margin="5, 0, 10, 0"/>
+                Margin="5, 0, 10, 0">
+
+                <Button.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-40">
+
+                        <TextBlock x:Name="StopStartSimulationButtonToolTip"
+                                   Text="{DynamicResource {x:Static help:TextResourcesKeys.DashboardStopStartButtonRunningToolTipTextKey}}"
+                                   Style="{StaticResource ToolTipTextBlock}"/>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
 
             <Line
                 Grid.Column="3"
@@ -126,10 +161,21 @@
             <Button x:Name="LockUnlockDashboardButton"
                 Grid.Column="3"
                 Foreground="Black"
-                Content="{Binding Source={StaticResource LockIcon}, Path=Geometry}"
+                Content="{Binding Source={StaticResource {x:Static help:IconResourcesKeys.LockIconKey}}, Path=Geometry}"
                 Style="{StaticResource SvgButton}"
                 Padding="2"
-                Margin="10, 0, 10, 0"/>
+                Margin="10, 0, 10, 0">
+
+                <Button.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-40">
+
+                        <TextBlock x:Name="LockUnlockDashboardButtonToolTip"
+                                   Text="{DynamicResource {x:Static help:TextResourcesKeys.DashboardLockUnlockButtonLockedToolTipTextKey}}"
+                                   Style="{StaticResource ToolTipTextBlock}"/>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
         </Grid>
     </Border>
 </reactiveUi:ReactiveUserControl>

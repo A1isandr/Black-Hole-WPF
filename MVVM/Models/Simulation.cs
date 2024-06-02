@@ -9,7 +9,7 @@ using Black_Hole.Services;
 
 namespace Black_Hole.MVVM.Models
 {
-    public class Simulation
+    public class Simulation(IParticlesService particlesService)
     {
         #region Constants
 
@@ -21,18 +21,9 @@ namespace Black_Hole.MVVM.Models
 
         #region Properties
 
+        private readonly IParticlesService _particlesService = particlesService;
+
         public bool IsRunning { get; private set; }
-
-        private readonly IParticlesService _particlesService;
-
-        #endregion
-
-        #region Constructors
-
-        public Simulation(IParticlesService particlesService)
-        {
-            _particlesService = particlesService;
-        }
 
         #endregion
 
@@ -54,6 +45,8 @@ namespace Black_Hole.MVVM.Models
                     BlackHoleViewModel.Instance.BlackHole.Pull(particle);
                     particle.Update();
                 }
+
+                _particlesService.DeleteDeleteCandidates();
             }
         }
 

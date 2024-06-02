@@ -14,9 +14,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Black_Hole.Helpers;
 using Black_Hole.MVVM.Models;
 using Black_Hole.MVVM.ViewModels;
 using Black_Hole.Services;
@@ -30,6 +32,8 @@ namespace Black_Hole.MVVM.Views
     /// </summary>
     public partial class ParticleCanvasView : ReactiveUserControl<ParticleCanvasViewModel>
     {
+        private readonly Storyboard _spawnParticlesTipOpacityAnimation;
+
         public ParticleCanvasView()
         {
             InitializeComponent();
@@ -37,6 +41,11 @@ namespace Black_Hole.MVVM.Views
             ViewModel = new ParticleCanvasViewModel
             (
                 (ParticlesService)App.ServiceProvider!.GetService(typeof(IParticlesService))!
+            );
+
+            _spawnParticlesTipOpacityAnimation = (Storyboard)TryFindResource
+            (
+                AnimationResourcesKeys.ParticleCanvasSpawnParticlesTipTextBlockVisibleOpacityAnimationKey
             );
 
             // Костыль, но я так и не придумал, как забиндить положение частиц "по-реактивному".
@@ -47,6 +56,31 @@ namespace Black_Hole.MVVM.Views
                 this.OneWayBind(ViewModel,
                         viewModel => viewModel.Particles,
                         view => view.ParticlesCanvas.ItemsSource)
+                    .DisposeWith(disposables);
+
+                this.OneWayBind(ViewModel,
+                        viewModel => viewModel.ShowTip,
+                        view => view.SpawnParticlesTipTextBlock.Visibility)
+                    .DisposeWith(disposables);
+
+                SpawnParticlesTipTextBlock
+                    .Events()
+                    .IsVisibleChanged
+                    .Subscribe(e =>
+                    {
+                        switch (SpawnParticlesTipTextBlock.Visibility)
+                        {
+                            case Visibility.Visible:
+                                _spawnParticlesTipOpacityAnimation.Begin();
+                                break;
+                            case Visibility.Hidden:
+                                break;
+                            case Visibility.Collapsed:
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                    })
                     .DisposeWith(disposables);
             });
         }

@@ -14,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Black_Hole.Helpers;
 using Black_Hole.MVVM.ViewModels;
 using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
@@ -35,9 +36,9 @@ namespace Black_Hole.MVVM.Views
 
 			ViewModel = BlackHoleViewModel.Instance;
 
-			_sizeAnimation = (Storyboard)TryFindResource("SizeAnimation");
-			_mouseDownAnimation = (Storyboard)TryFindResource("MouseDownAnimation");
-			_mouseUpAnimation = (Storyboard)TryFindResource("MouseUpAnimation");
+			_sizeAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.BlackHoleSizeAnimationKey);
+			_mouseDownAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.BlackHoleMouseDownAnimationKey);
+			_mouseUpAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.BlackHoleMouseUpAnimationKey);
 
 			_mouseUpAnimation.Completed += (_, _) => _sizeAnimation.Begin();
 

@@ -4,11 +4,24 @@
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                                 xmlns:local="clr-namespace:Black_Hole.MVVM.Views"
+                                xmlns:help="clr-namespace:Black_Hole.Helpers"
                                 xmlns:reactiveUi="http://reactiveui.net"
                                 xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
                                 x:TypeArguments="vm:ParticleCanvasViewModel"
                                 mc:Ignorable="d"
                                 d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="{x:Static help:AnimationResourcesKeys.ParticleCanvasSpawnParticlesTipTextBlockVisibleOpacityAnimationKey}"
+            TargetName="SpawnParticlesTipTextBlock"
+            TargetProperty="Opacity">
+            
+            <DoubleAnimation
+                From="0"
+                To="1"
+                Duration="0:0:0.3"/>
+        </Storyboard>
+    </UserControl.Resources>
 
     <Grid>
         <ItemsControl x:Name="ParticlesCanvas">
@@ -26,5 +39,13 @@
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>
+
+        <TextBlock x:Name="SpawnParticlesTipTextBlock"
+            Text="{DynamicResource {x:Static help:TextResourcesKeys.ParticleCanvasSpawnParticlesTipTextBlockTextKey}}"
+            FontSize="20"
+            FontWeight="Medium"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="0, 0, 0, 100"/>
     </Grid>
 </reactiveUi:ReactiveUserControl>

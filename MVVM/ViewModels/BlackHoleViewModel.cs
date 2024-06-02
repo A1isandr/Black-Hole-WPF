@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Black_Hole.MVVM.Models;
+using Black_Hole.Services;
 using ReactiveUI;
 
 namespace Black_Hole.MVVM.ViewModels
@@ -21,7 +22,7 @@ namespace Black_Hole.MVVM.ViewModels
         {
             get
             {
-                _instance ??= new BlackHoleViewModel(new BlackHole());
+                _instance ??= new BlackHoleViewModel(new BlackHole((ParticlesService)App.ServiceProvider!.GetService(typeof(IParticlesService))!));
                 return _instance;
             }
         }

@@ -47,7 +47,7 @@ namespace Black_Hole.MVVM.Views
                     {
                         var point = e.GetPosition(this);
 
-                        // Небольшой трюк, чтобы курсор указывал на цент эллипса при появлении.
+                        // Небольшой трюк, чтобы курсор указывал на центр эллипса при появлении.
                         point.X -= 10;
                         point.Y -= 10;
                         ViewModel.SpawnParticleCommand.Execute(point).Subscribe();

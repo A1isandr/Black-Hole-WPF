@@ -13,7 +13,11 @@ namespace Black_Hole.Services
     {
         public void SpawnParticle(Point coords);
 
-        public void ClearParticles();
+        public void AddToDeleteCandidates(Particle particle);
+
+        public void DeleteDeleteCandidates();
+
+        public void DeleteAllParticles();
 
         public IEnumerable<Particle> GetParticles();
 

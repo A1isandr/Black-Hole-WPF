@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Black_Hole.Services;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -70,14 +72,12 @@ namespace Black_Hole.MVVM.ViewModels
 
             _particlesService
                 .Connect()
+                .ObserveOn(RxApp.MainThreadScheduler)
                 .Subscribe(e =>
                 {
                     NumParticles += e.Adds;
                     NumParticles -= e.Removes;
                 });
-
-            //this.WhenAnyValue(x => SimulationViewModel.Instance.SimulationState)
-            //    .Subscribe(state => SimulationState = state);
         }
 
         #endregion

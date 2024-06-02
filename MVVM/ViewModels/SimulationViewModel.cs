@@ -97,7 +97,7 @@ namespace Black_Hole.MVVM.ViewModels
 
             ResetSimulationCommand = ReactiveCommand.Create<Unit>(_ =>
             {
-                _particlesService.ClearParticles();
+                _particlesService.DeleteAllParticles();
                 _particlesHistoryService.ClearHistory();
             });
         }
