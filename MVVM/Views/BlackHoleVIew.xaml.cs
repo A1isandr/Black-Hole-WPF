@@ -43,9 +43,59 @@ namespace Black_Hole.MVVM.Views
 			_mouseUpAnimation.Completed += (_, _) => _sizeAnimation.Begin();
 
 			this.WhenActivated(disposables =>
-			{
-				this
-					.Events()
+            {
+                //this.OneWayBind(ViewModel,
+                //        viewModel => viewModel.AccretionDiskRadius,
+                //        view => view.AccretionDisk.Width)
+                //    .DisposeWith(disposables);
+
+                //this.OneWayBind(ViewModel,
+                //        viewModel => viewModel.AccretionDiskRadius,
+                //        view => view.AccretionDisk.Height)
+                //    .DisposeWith(disposables);
+
+                //this.OneWayBind(ViewModel,
+                //        viewModel => viewModel.ParticleOrbit,
+                //        view => view.PhotonOrbit.Width)
+                //    .DisposeWith(disposables);
+
+                //this.OneWayBind(ViewModel,
+                //        viewModel => viewModel.ParticleOrbit,
+                //        view => view.PhotonOrbit.Height)
+                //    .DisposeWith(disposables);
+
+                //this.OneWayBind(ViewModel,
+                //        viewModel => viewModel.BlackHole.Rs,
+                //        view => view.BlackHole.Height)
+                //    .DisposeWith(disposables);
+
+                //this.OneWayBind(ViewModel,
+                //        viewModel => viewModel.BlackHole.Rs,
+                //        view => view.BlackHole.Width)
+                //    .DisposeWith(disposables);
+
+      //          this.OneWayBind(ViewModel,
+						//viewModel => viewModel.Start,
+						//view => view.BottomLine.Y1)
+						//.DisposeWith(disposables);
+
+      //          this.OneWayBind(ViewModel,
+      //                  viewModel => viewModel.Start,
+      //                  view => view.BottomLine.Y2)
+      //              .DisposeWith(disposables);
+
+      //          this.OneWayBind(ViewModel,
+      //                  viewModel => viewModel.End,
+      //                  view => view.TopLine.Y1)
+      //              .DisposeWith(disposables);
+
+      //          this.OneWayBind(ViewModel,
+      //                  viewModel => viewModel.End,
+      //                  view => view.TopLine.Y2)
+      //              .DisposeWith(disposables);
+
+                this
+                    .Events()
 					.PreviewMouseDown
 					.Subscribe(e =>
                     {

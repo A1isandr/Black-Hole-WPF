@@ -8,11 +8,11 @@ using System.Windows;
 
 namespace Black_Hole.Helpers
 {
-    public static class Vector2Extension
+    public static class Vector2Extensions
     {
         public static float Magnitude(this Vector2 vector)
         {
-            return (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+            return MathF.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
         }
 
         public static float MagnitudeSqr(this Vector2 vector)
@@ -50,6 +50,16 @@ namespace Black_Hole.Helpers
             }
 
             return vector;
+        }
+
+        public static float Heading(this Vector2 vector)
+        {
+            return MathF.Atan2(vector.Y, vector.X);
+        }
+
+        public static Vector2 FromAngle(float angle, float length = 1)
+        {
+            return new Vector2(length * MathF.Cos(angle), length * MathF.Sin(angle));
         }
     }
 }

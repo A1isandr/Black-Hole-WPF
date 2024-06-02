@@ -33,6 +33,14 @@ namespace Black_Hole.MVVM.ViewModels
 
         public BlackHole BlackHole { get; init; }
 
+        public double AccretionDiskRadius { get; set; }
+
+        public double ParticleOrbit { get; set; }
+
+        public double Start { get; set; } = Application.Current.MainWindow!.Height / 2;
+
+        public double End { get; set; }
+
         #endregion
 
         #region Constructors
@@ -40,6 +48,16 @@ namespace Black_Hole.MVVM.ViewModels
         private BlackHoleViewModel(BlackHole blackHole)
         {
             BlackHole = blackHole;
+
+            End = Application.Current.MainWindow!.Height / 2 - BlackHole.Rs * 2.6;
+
+            this
+                .WhenAnyValue(x => x.BlackHole.Rs)
+                .Subscribe(rs => AccretionDiskRadius = rs * 3 + 128);
+
+            this
+                .WhenAnyValue(x => x.BlackHole.Rs)
+                .Subscribe(rs => ParticleOrbit = rs * 1.5 + 64);
         }
 
         #endregion

@@ -45,11 +45,13 @@ namespace Black_Hole.MVVM.Models
         public void Pull(Particle particle)
         {
             var force = Position - particle.Position;
+            var theta = force.Heading();
             var r = force.Magnitude();
             var gravityForce = Simulation.G * Mass / (r * r);
-            force = force.SetMagnitude(gravityForce);
-            particle.Velocity += force;
-            particle.Velocity = particle.Velocity.SetMagnitude(Simulation.C);
+            var deltaTheta = -gravityForce * (Simulation.DeltaTime / Simulation.C) * MathF.Sin(particle.Theta - theta);
+            deltaTheta /= MathF.Abs(1.0f - (2.0f * Simulation.G * Mass) / (r * Simulation.C * Simulation.C));
+            particle.Theta += deltaTheta;
+            particle.Velocity = Vector2Extensions.FromAngle(particle.Theta);
 
             if (r < Rs)
             {

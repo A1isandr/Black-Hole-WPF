@@ -24,7 +24,7 @@ namespace Black_Hole.MVVM.Models
 
         public Vector2 Velocity { get; set; } = new(-Simulation.C, 0);
 
-        private readonly TimeSpan _historyInterval = TimeSpan.FromMilliseconds(100);
+        public float Theta { get; set; } = float.Pi;
 
         #endregion
 

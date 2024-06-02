@@ -8,22 +8,10 @@
                                 xmlns:reactiveUi="http://reactiveui.net"
                                 xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
                                 x:TypeArguments="vm:BlackHoleViewModel"
-                                x:Name="BlackHole"
+                                x:Name="BlackHoleControl"
                                 mc:Ignorable="d"
                                 Loaded="BlackHoleView_OnLoaded"
                                 d:DesignHeight="450" d:DesignWidth="800">
-
-    <UserControl.RenderTransform>
-        <ScaleTransform
-            ScaleX="1" 
-            ScaleY="1"/>
-    </UserControl.RenderTransform>
-
-    <UserControl.RenderTransformOrigin>
-        <Point 
-            X="0.5" 
-            Y="0.5"/>
-    </UserControl.RenderTransformOrigin>
 
     <UserControl.Style>
         <Style
@@ -40,25 +28,14 @@
                         Opacity="1"/>
                 </Setter.Value>
             </Setter>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Ellipse
-                            Width="200"
-                            Height="200"
-                            Fill="Black"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
         </Style>
     </UserControl.Style>
 
     <UserControl.Resources>
         <Storyboard x:Key="{x:Static help:AnimationResourcesKeys.BlackHoleSizeAnimationKey}"
-                    TargetName="BlackHole"
-                    TargetProperty="ScaleTransform"
-                    RepeatBehavior="Forever">
+                TargetName="BlackHole"
+                TargetProperty="ScaleTransform"
+                RepeatBehavior="Forever">
 
                 <DoubleAnimation
                     Storyboard.TargetProperty="RenderTransform.ScaleX"
@@ -157,4 +134,48 @@
             </DoubleAnimation>
         </Storyboard>
     </UserControl.Resources>
+
+    <Grid>
+        <Ellipse x:Name="BlackHole"
+            Width="200"
+            Height="200"
+            Fill="Black">
+
+            <Ellipse.RenderTransform>
+                <ScaleTransform
+                    ScaleX="1" 
+                    ScaleY="1"/>
+            </Ellipse.RenderTransform>
+
+            <Ellipse.RenderTransformOrigin>
+                <Point 
+                    X="0.5" 
+                    Y="0.5"/>
+            </Ellipse.RenderTransformOrigin>
+        </Ellipse>
+
+        <!--<Line x:Name="BottomLine"
+            X1="0"
+            X2="{Binding ElementName=BlackHoleControl, Path=ActualWidth}"
+            StrokeThickness="2"
+            Stroke="Black"/>
+
+        <Line x:Name="TopLine"
+              X1="0"
+              X2="{Binding ElementName=BlackHoleControl, Path=ActualWidth}"
+              StrokeThickness="2"
+              Stroke="Black"/>-->
+
+        <!--<Ellipse x:Name="AccretionDisk"
+            Stroke="Black"
+            StrokeThickness="5"
+            StrokeDashArray="10"
+            StrokeDashCap="Round"/>
+
+        <Ellipse x:Name="PhotonOrbit"
+            Stroke="Black"
+            StrokeThickness="5"
+            StrokeDashArray="10"
+            StrokeDashCap="Round"/>-->
+    </Grid>
 </reactiveUi:ReactiveUserControl>

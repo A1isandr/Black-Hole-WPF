@@ -13,9 +13,9 @@ namespace Black_Hole.MVVM.Models
     {
         #region Constants
 
-        public const int C = 50;
-        public const float G = 2f;
-        public const float DeltaTime = 0.01f;
+        public const int C = 30;
+        public const float G = 3f;
+        public const float DeltaTime = 0.3f;
 
         #endregion
 
