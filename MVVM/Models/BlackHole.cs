@@ -13,9 +13,9 @@ namespace Black_Hole.MVVM.Models
     {
         #region Properties
 
-        public Vector2 Position { get; set; } = new((float)Application.Current.MainWindow!.ActualWidth, (float)Application.Current.MainWindow.ActualHeight);
+        public Vector2 Position { get; set; } = new((float)Application.Current.MainWindow!.ActualWidth / 2f, (float)Application.Current.MainWindow.ActualHeight / 2f);
 
-        public int Mass { get; set; } = 3000;
+        public int Mass { get; set; } = 1000;
 
         #endregion
 
@@ -25,7 +25,7 @@ namespace Black_Hole.MVVM.Models
         {
             Application.Current.MainWindow!.SizeChanged += (_, _) =>
             {
-                Position = new Vector2((float)Application.Current.MainWindow!.ActualWidth, (float)Application.Current.MainWindow.ActualHeight);
+                Position = new Vector2((float)Application.Current.MainWindow!.ActualWidth / 2f, (float)Application.Current.MainWindow.ActualHeight / 2f);
             };
         }
 
@@ -33,12 +33,14 @@ namespace Black_Hole.MVVM.Models
 
         #region Methods
 
-        public Vector2 Pull(Particle particle)
+        public void Pull(Particle particle)
         {
             var force = Position - particle.Position;
             var r = force.Magnitude();
-            var fg = Simulation.G * Mass / (r * r);
-            return Vector2.One;
+            var gravityForce = Simulation.G * Mass / (r * r);
+            force = force.SetMagnitude(gravityForce);
+            particle.Velocity += force;
+            particle.Velocity = particle.Velocity.SetMagnitude(Simulation.C);
         }
 
         #endregion

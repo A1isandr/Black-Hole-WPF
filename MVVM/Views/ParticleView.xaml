@@ -10,6 +10,12 @@
                                 mc:Ignorable="d"
                                 d:DesignHeight="450" d:DesignWidth="800">
 
+    <UserControl.RenderTransformOrigin>
+        <Point 
+            X="0.5" 
+            Y="0.5"/>
+    </UserControl.RenderTransformOrigin>
+
     <UserControl.Style>
         <Style
             TargetType="UserControl">

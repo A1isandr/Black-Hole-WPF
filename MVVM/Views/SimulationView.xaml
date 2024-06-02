@@ -1,0 +1,32 @@
+﻿<reactiveUi:ReactiveUserControl x:Class="Black_Hole.MVVM.Views.SimulationView"
+                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                                xmlns:local="clr-namespace:Black_Hole.MVVM.Views"
+                                xmlns:reactiveUi="http://reactiveui.net"
+                                xmlns:views="clr-namespace:Black_Hole.MVVM.Views"
+                                xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
+                                x:TypeArguments="vm:SimulationViewModel"
+                                x:Name="Simulation"
+                                mc:Ignorable="d"
+                                Loaded="MainView_OnLoaded"
+                                d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Rectangle x:Name="ClickRectangle"
+            Width="{Binding ElementName=Simulation, Path=ActualWidth}"
+            Height="{Binding ElementName=Simulation, Path=ActualHeight}"
+            Fill="Transparent"/>
+
+        <views:ParticlesHistoryCanvasView/>
+
+        <views:ParticleCanvasView/>
+        
+        <views:BlackHoleView x:Name="BlackHole"/>
+
+        <views:DashboardView
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"/>
+    </Grid>
+</reactiveUi:ReactiveUserControl>

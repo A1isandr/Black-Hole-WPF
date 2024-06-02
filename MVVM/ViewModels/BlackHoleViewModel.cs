@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Black_Hole.MVVM.Models;
 using ReactiveUI;
 
 namespace Black_Hole.MVVM.ViewModels
@@ -20,7 +21,7 @@ namespace Black_Hole.MVVM.ViewModels
         {
             get
             {
-                _instance ??= new BlackHoleViewModel();
+                _instance ??= new BlackHoleViewModel(new BlackHole());
                 return _instance;
             }
         }
@@ -29,18 +30,15 @@ namespace Black_Hole.MVVM.ViewModels
 
         #region Properties
 
-        public Vector2 Position { get; set; } = new((float)Application.Current.MainWindow!.ActualWidth, (float)Application.Current.MainWindow.ActualHeight);
+        public BlackHole BlackHole { get; init; }
 
         #endregion
 
         #region Constructors
 
-        private BlackHoleViewModel()
+        private BlackHoleViewModel(BlackHole blackHole)
         {
-            Application.Current.MainWindow!.SizeChanged += (_, _) =>
-            {
-                Position = new Vector2((float)Application.Current.MainWindow!.ActualWidth, (float)Application.Current.MainWindow.ActualHeight);
-            };
+            BlackHole = blackHole;
         }
 
         #endregion

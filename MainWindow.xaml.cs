@@ -29,81 +29,81 @@ namespace Black_Hole
 
 			this.WhenActivated(disposables =>
 			{
-				Header
-					.Events()
-					.MouseDown
-					.Subscribe(e =>
-					{
-						if (e.ChangedButton != MouseButton.Left) return;
+                Header
+                    .Events()
+                    .MouseDown
+                    .Subscribe(e =>
+                    {
+                        if (e.ChangedButton != MouseButton.Left) return;
 
-						if (WindowState == WindowState.Maximized)
-						{
-							var mouseWindowRelativeCoords = Mouse.GetPosition(this);
+                        if (WindowState == WindowState.Maximized)
+                        {
+                            var mouseWindowRelativeCoords = Mouse.GetPosition(this);
 
-							Left = mouseWindowRelativeCoords.X;
-							Top = mouseWindowRelativeCoords.Y - 5;
+                            Left = mouseWindowRelativeCoords.X;
+                            Top = mouseWindowRelativeCoords.Y - 5;
 
-							WindowState = WindowState.Normal;
-						}
+                            WindowState = WindowState.Normal;
+                        }
 
-						DragMove();
-					})
-					.DisposeWith(disposables);
+                        DragMove();
+                    })
+                    .DisposeWith(disposables);
 
-				CloseWindowButton
-					.Events()
-					.Click
-					.Subscribe(e => Close())
-					.DisposeWith(disposables);
+                CloseWindowButton
+                    .Events()
+                    .Click
+                    .Subscribe(e => Close())
+                    .DisposeWith(disposables);
 
-				MaxWindowButton
-					.Events()
-					.Click
-					.Subscribe(e =>
-					{
-						switch (WindowState)
-						{
-							case WindowState.Maximized:
-							{
-								WindowState = WindowState.Normal;
+                MaxWindowButton
+                    .Events()
+                    .Click
+                    .Subscribe(e =>
+                    {
+                        switch (WindowState)
+                        {
+                            case WindowState.Maximized:
+                            {
+                                WindowState = WindowState.Normal;
 
-								var resource =
-									Application.Current.FindResource(IconResourcesKeys.WindowMaximizeIconKey);
+                                var resource =
+                                    Application.Current.FindResource(IconResourcesKeys.WindowMaximizeIconKey);
 
-								if (resource is not null)
-								{
-									MaxWindowButton.Content = ((GeometryDrawing)resource).Geometry;
-								}
+                                if (resource is not null)
+                                {
+                                    MaxWindowButton.Content = ((GeometryDrawing)resource).Geometry;
+                                }
 
-								break;
-							}
-							case WindowState.Normal:
-							{
-								WindowState = WindowState.Maximized;
+                                break;
+                            }
+                            case WindowState.Normal:
+                            {
+                                WindowState = WindowState.Maximized;
 
-								var resource = Application.Current.FindResource(IconResourcesKeys.WindowRestoreIconKey);
+                                var resource = Application.Current.FindResource(IconResourcesKeys.WindowRestoreIconKey);
 
-								if (resource is not null)
-								{
-									MaxWindowButton.Content = ((GeometryDrawing)resource).Geometry;
-								}
+                                if (resource is not null)
+                                {
+                                    MaxWindowButton.Content = ((GeometryDrawing)resource).Geometry;
+                                }
 
-								break;
-							}
-							case WindowState.Minimized:
-								break;
-							default:
-								throw new ArgumentOutOfRangeException(nameof(e.Source));
-						}
-					})
-					.DisposeWith(disposables);
+                                break;
+                            }
+                            case WindowState.Minimized:
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException(nameof(e.Source));
+                        }
+                    })
+                    .DisposeWith(disposables);
 
-				MinWindowButton
-					.Events()
-					.Click
-					.Subscribe(e => WindowState = WindowState.Minimized)
-					.DisposeWith(disposables);
-			});
+                MinWindowButton
+                    .Events()
+                    .Click
+                    .Subscribe(e => WindowState = WindowState.Minimized)
+                    .DisposeWith(disposables);
+            });
 		}
 	}
 }

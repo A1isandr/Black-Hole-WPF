@@ -5,9 +5,8 @@
                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                            xmlns:local="clr-namespace:Black_Hole"
                            xmlns:reactiveUi="http://reactiveui.net"
-                           xmlns:views="clr-namespace:Black_Hole"
                            xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
-                           xmlns:views1="clr-namespace:Black_Hole.MVVM.Views"
+                           xmlns:views="clr-namespace:Black_Hole.MVVM.Views"
                            x:TypeArguments="vm:MainWindowViewModel"
                            mc:Ignorable="d"
                            Title="Black hole" 
@@ -31,66 +30,66 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Border Name="Header"
-                 Grid.Row="0"
-                 Panel.ZIndex="5"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Stretch"
-                 Background="{Binding ElementName=Wrapper, Path=Background}"
-                 Padding="5, 0, 5, 0">
-
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Border Name="WindowTitle"
-                        Grid.Column="0"
-                        Background="{StaticResource WindowTitleBackgroundBrush}"
-                        CornerRadius="10"
-                        HorizontalAlignment="Left"
-                        Width="Auto"
-                        Padding="10, 5, 10, 5"
-                        Margin="0, 5, 10, 5">
-
-                        <TextBlock 
-                            Text="{Binding  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=Title}"
-                            FontSize="14"
-                            FontWeight="ExtraBold"
-                            Foreground="{StaticResource WindowTitleForegroundBrush}"
-                            TextAlignment="Left"
-                            VerticalAlignment="Center"
-                            TextTrimming="CharacterEllipsis" />
-                    </Border>
-
-                    <StackPanel 
-                        Grid.Column="1"
-                        Orientation="Horizontal">
-
-                        <Button Name="MinWindowButton"
-                            Content="{Binding Geometry, Source={StaticResource WindowMinimizeIcon}}"
-                            Style="{StaticResource WindowHeaderButton}"
-                            Margin="5"/>
-
-                        <Button Name="MaxWindowButton"
-                            Content="{Binding Geometry, Source={StaticResource WindowMaximizeIcon}}"
-                            Style="{StaticResource WindowHeaderButton}"
-                            Margin="5"/>
-
-                        <Button Name="CloseWindowButton"
-                            Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
-                            Style="{StaticResource CloseWindowHeaderButton}"
-                            Margin="5, 5, 0, 5"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-
             <Grid Name="Main"
                 Grid.Row="1"
                 Panel.ZIndex="1">
 
-                <views1:MainView x:Name="MainView"/>
+                <Border Name="Header"
+                        Grid.Row="0"
+                        Panel.ZIndex="5"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        Background="Transparent"
+                        Padding="5, 0, 5, 0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Name="WindowTitle"
+                                Grid.Column="0"
+                                Background="{StaticResource WindowTitleBackgroundBrush}"
+                                CornerRadius="10"
+                                HorizontalAlignment="Left"
+                                Width="Auto"
+                                Padding="10, 5, 10, 5"
+                                Margin="0, 5, 10, 5">
+
+                            <TextBlock 
+                                Text="{Binding  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=Title}"
+                                FontSize="14"
+                                FontWeight="ExtraBold"
+                                Foreground="{StaticResource WindowTitleForegroundBrush}"
+                                TextAlignment="Left"
+                                VerticalAlignment="Center"
+                                TextTrimming="CharacterEllipsis" />
+                        </Border>
+
+                        <StackPanel 
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+
+                            <Button Name="MinWindowButton"
+                                    Content="{Binding Geometry, Source={StaticResource WindowMinimizeIcon}}"
+                                    Style="{StaticResource WindowHeaderButton}"
+                                    Margin="5"/>
+
+                            <Button Name="MaxWindowButton"
+                                    Content="{Binding Geometry, Source={StaticResource WindowMaximizeIcon}}"
+                                    Style="{StaticResource WindowHeaderButton}"
+                                    Margin="5"/>
+
+                            <Button Name="CloseWindowButton"
+                                    Content="{Binding Geometry, Source={StaticResource CloseIcon}}"
+                                    Style="{StaticResource CloseWindowHeaderButton}"
+                                    Margin="5, 5, 0, 5"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <views:SimulationView x:Name="MainView"/>
             </Grid>
         </Grid>
     </Border>

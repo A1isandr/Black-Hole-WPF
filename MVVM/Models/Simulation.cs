@@ -5,18 +5,40 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Black_Hole.MVVM.ViewModels;
+using Black_Hole.Services;
 
 namespace Black_Hole.MVVM.Models
 {
     public class Simulation
     {
-        public const int C = 30;
-        public const float G = 3.54f;
+        #region Constants
+
+        public const int C = 50;
+        public const float G = 2f;
         public const float DeltaTime = 0.01f;
 
-        private static bool IsRunning { get; set; }
+        #endregion
 
-        public static void Run()
+        #region Properties
+
+        public bool IsRunning { get; private set; }
+
+        private readonly IParticlesService _particlesService;
+
+        #endregion
+
+        #region Constructors
+
+        public Simulation(IParticlesService particlesService)
+        {
+            _particlesService = particlesService;
+        }
+
+        #endregion
+
+        #region Methods
+
+        public void Run()
         {
             IsRunning = true;
 
@@ -25,20 +47,21 @@ namespace Black_Hole.MVVM.Models
                 // Для стабилизации симуляции.
                 Thread.Sleep(TimeSpan.FromMilliseconds(1));
 
-                var particles = ParticleCanvasViewModel.Instance.Particles
-                    .Select(particle => particle.Particle)
-                    .ToList();
+                var particles = _particlesService.GetParticles();
 
                 foreach (var particle in particles)
                 {
-                    particle.Position += particle.Velocity * DeltaTime;
+                    BlackHoleViewModel.Instance.BlackHole.Pull(particle);
+                    particle.Update();
                 }
             }
         }
 
-        public static void Stop()
+        public void Stop()
         {
             IsRunning = false;
         }
+
+        #endregion
     }
 }

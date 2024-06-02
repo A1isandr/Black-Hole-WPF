@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
 using System.Reactive.Disposables;
@@ -18,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Black_Hole.MVVM.Models;
 using Black_Hole.MVVM.ViewModels;
+using Black_Hole.Services;
 using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
 
@@ -32,7 +34,10 @@ namespace Black_Hole.MVVM.Views
         {
             InitializeComponent();
 
-            ViewModel = ParticleCanvasViewModel.Instance;
+            ViewModel = new ParticleCanvasViewModel
+            (
+                (ParticlesService)App.ServiceProvider!.GetService(typeof(IParticlesService))!
+            );
 
             // Костыль, но я так и не придумал, как забиндить положение частиц "по-реактивному".
             ParticlesCanvas.DataContext = ViewModel.Particles;
@@ -43,16 +48,6 @@ namespace Black_Hole.MVVM.Views
                         viewModel => viewModel.Particles,
                         view => view.ParticlesCanvas.ItemsSource)
                     .DisposeWith(disposables);
-
-                ClickRectangle
-                    .Events()
-                    .PreviewMouseLeftButtonUp
-                    .Subscribe(e =>
-                    {
-                        var point = Mouse.GetPosition(this);
-                        var particle = new Particle(new Vector2((float)point.X, (float)point.Y));
-                        ViewModel.Particles.Add(new ParticleViewModel(particle));
-                    });
             });
         }
     }

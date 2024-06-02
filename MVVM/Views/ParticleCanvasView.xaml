@@ -26,10 +26,5 @@
                 </Style>
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>
-
-        <Rectangle x:Name="ClickRectangle"
-            Fill="Transparent"
-            Width="{Binding ElementName=ParticlesCanvas, Path=ActualWidth}"
-            Height="{Binding ElementName=ParticlesCanvas, Path=ActualHeight}"/>
     </Grid>
 </reactiveUi:ReactiveUserControl>

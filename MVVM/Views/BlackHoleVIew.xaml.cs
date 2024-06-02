@@ -33,6 +33,8 @@ namespace Black_Hole.MVVM.Views
 		{
 			InitializeComponent();
 
+			ViewModel = BlackHoleViewModel.Instance;
+
 			_sizeAnimation = (Storyboard)TryFindResource("SizeAnimation");
 			_mouseDownAnimation = (Storyboard)TryFindResource("MouseDownAnimation");
 			_mouseUpAnimation = (Storyboard)TryFindResource("MouseUpAnimation");
