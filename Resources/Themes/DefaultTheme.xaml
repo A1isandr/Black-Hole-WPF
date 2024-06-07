@@ -1,120 +1,131 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:keys="clr-namespace:Black_Hole.Resources.Keys">
 
     <!--Colors-->
-        <!--WindowHeaderButton-->
-        <Color x:Key="WindowHeaderButtonsForegroundFillColor">Black</Color>
-        <Color x:Key="WindowHeaderButtonsMouseOverForegroundFillColor">Black</Color>
-        <Color x:Key="WindowHeaderButtonsBackgroundColor">GhostWhite</Color>
-        <Color x:Key="CloseWindowButtonMouseOverBackgroundColor">#d11d26</Color>
-        <Color x:Key="CloseWindowButtonDropShadowEffectColor">Red</Color>
+        <!--MainWindowTitle-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowTitleForegroundColorKey}">
+            Black
+        </Color>
 
-        <!--CommonButton-->
-        <Color x:Key="CommonButtonBackgroundColor">GhostWhite</Color>
-        <Color x:Key="CommonButtonBorderColor">Black</Color>
-        <Color x:Key="CommonButtonMouseOverBackgroundColor"
-                   R="64" G="64" B="64" A="150"/>
-        <Color x:Key="CommonButtonDisabledBackgroundColor">#262626</Color>
+        <!--MainWindowWrapper-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowWrapperBackgroundColorKey}">
+            GhostWhite
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowWrapperBorderColorKey}">
+            #1a1a1a
+        </Color>
+
+        <!--MainWindowHeader-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowHeaderBackgroundColorKey}">
+            Transparent
+        </Color>
+
+        <!--MainWindowHeaderButton-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowHeaderButtonForegroundFillColorKey}">
+            Black
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowHeaderButtonMouseOverForegroundFillColorKey}">
+            Black
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowHeaderButtonBackgroundColorKey}">
+            GhostWhite
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowCloseButtonMouseOverBackgroundColorKey}">
+            #d11d26
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowCloseButtonDropShadowEffectColorKey}">
+            Red
+        </Color>
+
+        <!--PrimaryButton-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.PrimaryButtonBackgroundColorKey}">
+            GhostWhite
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.PrimaryButtonBorderColorKey}">
+            Black
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.PrimaryButtonMouseOverBackgroundColorKey}">
+            #404040
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.PrimaryButtonDisabledBackgroundColorKey}">
+            #262626
+        </Color>
 
         <!--SvgButton-->
-        <Color x:Key="SvgButtonFillColor">GhostWhite</Color>
-        <Color x:Key="SvgButtonMouseOverFillColor">White</Color>
-
-        <!--CommonTextBox-->
-        <Color x:Key="CommonTextBoxForegroundColor">Black</Color>
-        <Color x:Key="CommonTextBoxBackgroundColor">GhostWhite</Color>
-        <Color x:Key="CommonTextBoxBorderColor">Black</Color>
-        <Color x:Key="CommonTextBoxCaretColor">Black</Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.SvgButtonFillColorKey}">
+            GhostWhite
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.SvgButtonMouseOverFillColorKey}">
+            White
+        </Color>
 
         <!--ToolTip-->
-        <Color x:Key="ToolTipBackgroundColor"
-                   R="0" G="0" B="0" A="200"/>
-
-        <!--Icon-->
-        <Color x:Key="IconBackgroundColor"
-                   R="0" G="0" B="0" A="150"/>
-        <Color x:Key="IconFillColor">#c4c4c4</Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.ToolTipBackgroundColorKey}">
+            Black
+        </Color>
 
         <!--Accent-->
-        <Color x:Key="AccentColor1">DodgerBlue</Color>
-        <Color x:Key="AccentColor2">CornflowerBlue</Color>
-        <Color x:Key="AccentColor3">DeepSkyBlue</Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.PrimaryAccentColorKey}">
+            DodgerBlue
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.SecondaryAccentColorKey}">
+            CornflowerBlue
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.TertiaryAccentColorKey}">
+            DeepSkyBlue
+        </Color>
 
     <!--Brushes-->
         <!--SolidColorBrushes-->
-            <!--WindowWrapper-->
-            <SolidColorBrush x:Key="WindowWrapperBackgroundBrush"
-                             Color="GhostWhite"/>
-            <SolidColorBrush x:Key="WindowWrapperBorderBrush"
-                             Color="#1a1a1a"/>
-            <SolidColorBrush x:Key="WindowIconBackgroundBrush"
-                             Color="Transparent"/>
-            <SolidColorBrush x:Key="WindowTitleBackgroundBrush"
-                             Color="Transparent"/>
-            <SolidColorBrush x:Key="WindowTitleForegroundBrush"
-                             Color="Black"/>
+            <!--MainWindowTitle-->
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.MainWindowTitleForegroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.MainWindowTitleForegroundColorKey}}"/>        
 
+            <!--MainWindowWrapper-->
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.MainWindowWrapperBackgroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.MainWindowWrapperBackgroundColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.MainWindowWrapperBorderBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.MainWindowWrapperBorderColorKey}}"/>
+            
+            <!--MainWindowHeader-->
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.MainWindowHeaderBackgroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.MainWindowHeaderBackgroundColorKey}}"/>  
+        
             <!--WindowHeaderButton-->
-            <SolidColorBrush x:Key="WindowHeaderButtonsForegroundFillBrush"
-                                    Color="{StaticResource WindowHeaderButtonsForegroundFillColor}"/>
-            <SolidColorBrush x:Key="WindowHeaderButtonsBackgroundBrush"
-                                    Color="{StaticResource WindowHeaderButtonsBackgroundColor}"/>
-            <SolidColorBrush x:Key="WindowHeaderButtonsMouseOverForegroundFillBrush"
-                                    Color="{StaticResource WindowHeaderButtonsMouseOverForegroundFillColor}"/>
-            <SolidColorBrush x:Key="CloseWindowButtonMouseOverBackgroundBrush"
-                                    Color="{StaticResource CloseWindowButtonMouseOverBackgroundColor}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.MainWindowHeaderButtonForegroundFillBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.MainWindowHeaderButtonForegroundFillColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.MainWindowHeaderButtonMouseOverForegroundFillBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.MainWindowHeaderButtonMouseOverForegroundFillColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.MainWindowHeaderButtonBackgroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.MainWindowHeaderButtonBackgroundColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.MainWindowCloseButtonMouseOverBackgroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.MainWindowCloseButtonMouseOverBackgroundColorKey}}"/>
 
-            <!--CommonButton-->
-            <SolidColorBrush x:Key="CommonButtonBackgroundBrush"
-                                    Color="{StaticResource CommonButtonBackgroundColor}"/>
-            <SolidColorBrush x:Key="CommonButtonBorderBrush" 
-                                    Color="{StaticResource CommonButtonBorderColor}"/>
-            <SolidColorBrush x:Key="CommonButtonMouseOverBackgroundBrush"
-                                    Color="{StaticResource CommonButtonMouseOverBackgroundColor}"/>
+            <!--PrimaryButton-->
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.PrimaryButtonBackgroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.PrimaryButtonBackgroundColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.PrimaryButtonBorderBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.PrimaryButtonBorderColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.PrimaryButtonMouseOverBackgroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.PrimaryButtonMouseOverBackgroundColorKey}}"/>
 
             <!--SvgButton-->
-            <SolidColorBrush x:Key="SvgButtonFillBrush"
-                                    Color="{StaticResource SvgButtonFillColor}"/>
-            <SolidColorBrush x:Key="SvgButtonMouseOverFillBrush"
-                                    Color="{StaticResource SvgButtonMouseOverFillColor}"/>
-
-            <!--CommonTextBox-->
-            <SolidColorBrush x:Key="CommonTextBoxForegroundBrush"
-                                    Color="{StaticResource CommonTextBoxForegroundColor}"/>
-            <SolidColorBrush x:Key="CommonTextBoxBackgroundBrush"
-                                    Color="{StaticResource CommonTextBoxBackgroundColor}"/>
-            <SolidColorBrush x:Key="CommonTextBoxBorderBrush"
-                                    Color="{StaticResource CommonTextBoxBorderColor}"/>
-            <SolidColorBrush x:Key="CommonTextBoxCaretBrush"
-                                    Color="{StaticResource CommonTextBoxCaretColor}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.SvgButtonFillBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.SvgButtonFillColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.SvgButtonMouseOverFillBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.SvgButtonMouseOverFillColorKey}}"/>
 
             <!--ToolTip-->
-            <SolidColorBrush x:Key="ToolTipBackgroundBrush"
-                                    Color="{StaticResource ToolTipBackgroundColor}"/>
-
-            <!--Icon-->
-            <SolidColorBrush x:Key="IconBackgroundBrush"
-                                    Color="{StaticResource IconBackgroundColor}"/>
-            <SolidColorBrush x:Key="IconFillBrush"
-                                    Color="{StaticResource IconFillColor}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.ToolTipBackgroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.ToolTipBackgroundColorKey}}"
+                             Opacity="0.7"/>
 
             <!--Accent-->
-            <SolidColorBrush x:Key="AccentBrush1"
-                                    Color="{StaticResource AccentColor1}"/>
-            <SolidColorBrush x:Key="AccentBrush2"
-                                    Color="{StaticResource AccentColor2}"/>
-
-    <!--LinearGradientBrushes-->
-        <!--Accent-->
-        <LinearGradientBrush x:Key="AccentGradientBrush"
-                                    StartPoint="0,0" 
-                                    EndPoint="1,0">
-
-            <GradientStop Color="{StaticResource AccentColor2}" 
-                                  Offset="0.0"/>
-            <GradientStop Color="{StaticResource AccentColor1}" 
-                                  Offset="0.3"/>
-            <GradientStop Color="{StaticResource AccentColor3}" 
-                                  Offset="0.7"/>
-        </LinearGradientBrush>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.PrimaryAccentBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.PrimaryAccentColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.SecondaryAccentBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.SecondaryAccentColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.TertiaryAccentBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.TertiaryAccentColorKey}}"/>   
 </ResourceDictionary>

@@ -14,8 +14,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Black_Hole.Helpers;
 using Black_Hole.MVVM.ViewModels;
+using Black_Hole.Resources.Keys;
 using Black_Hole.Services;
 using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
@@ -30,6 +30,9 @@ namespace Black_Hole.MVVM.Views
         private readonly Storyboard _flyOutAnimation;
         private readonly Storyboard _flyInAnimation;
 
+        private readonly Storyboard _resetButtonAnimation;
+        private readonly Storyboard _settingsButtonAnimation;
+
         public DashboardView()
         {
             InitializeComponent();
@@ -42,6 +45,9 @@ namespace Black_Hole.MVVM.Views
 
             _flyOutAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.DashboardFlyOutAnimationKey);
             _flyInAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.DashboardFlyInAnimationKey);
+
+            _resetButtonAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.DashboardResetButtonAnimationKey);
+            _settingsButtonAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.DashboardSettingsButtonAnimationKey);
 
             this.WhenActivated(disposables =>
             {
@@ -117,6 +123,24 @@ namespace Black_Hole.MVVM.Views
                     })
                     .DisposeWith(disposables);
 
+                ResetSimulationButton
+                    .Events()
+                    .Click
+                    .Subscribe(e =>
+                    {
+                        _resetButtonAnimation.Begin();
+                    })
+                    .DisposeWith(disposables);
+
+                SettingsButton
+                    .Events()
+                    .Click
+                    .Subscribe(e =>
+                    {
+                        _settingsButtonAnimation.Begin();
+                    })
+                    .DisposeWith(disposables);  
+
                 _flyOutAnimation
                     .Events()
                     .Completed
@@ -140,8 +164,8 @@ namespace Black_Hole.MVVM.Views
         {
             var resource = state switch
             {
-                SimulationState.Running => Application.Current.FindResource(IconResourcesKeys.PauseIconKey),
-                SimulationState.Stopped => Application.Current.FindResource(IconResourcesKeys.PlayIconKey),
+                SimulationState.Running => Application.Current.FindResource(SvgImagesKeys.PauseIconKey),
+                SimulationState.Stopped => Application.Current.FindResource(SvgImagesKeys.PlayIconKey),
                 _ => throw new ArgumentOutOfRangeException(nameof(state), state, "Failed to convert SimulationState to StopStartButtonIcon."),
             };
 
@@ -164,8 +188,8 @@ namespace Black_Hole.MVVM.Views
         {
             var resource = state switch
             {
-                DashboardState.Unlocked => Application.Current.FindResource(IconResourcesKeys.LockOpenIconKey),
-                DashboardState.Locked => Application.Current.FindResource(IconResourcesKeys.LockIconKey),
+                DashboardState.Unlocked => Application.Current.FindResource(SvgImagesKeys.LockOpenIconKey),
+                DashboardState.Locked => Application.Current.FindResource(SvgImagesKeys.LockIconKey),
                 _ => throw new ArgumentOutOfRangeException(nameof(state), state, "Failed to convert DashboardState to LockUnlockDashboardButtonIcon."),
             };
 

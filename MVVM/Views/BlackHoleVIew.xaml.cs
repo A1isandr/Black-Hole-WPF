@@ -14,8 +14,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Black_Hole.Helpers;
 using Black_Hole.MVVM.ViewModels;
+using Black_Hole.Resources.Keys;
 using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
 

@@ -4,7 +4,7 @@
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                                 xmlns:local="clr-namespace:Black_Hole.MVVM.Views"
-                                xmlns:help="clr-namespace:Black_Hole.Helpers"
+                                xmlns:keys="clr-namespace:Black_Hole.Resources.Keys"
                                 xmlns:reactiveUi="http://reactiveui.net"
                                 xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
                                 x:TypeArguments="vm:BlackHoleViewModel"
@@ -32,7 +32,7 @@
     </UserControl.Style>
 
     <UserControl.Resources>
-        <Storyboard x:Key="{x:Static help:AnimationResourcesKeys.BlackHoleSizeAnimationKey}"
+        <Storyboard x:Key="{x:Static keys:AnimationResourcesKeys.BlackHoleSizeAnimationKey}"
                 TargetName="BlackHole"
                 TargetProperty="ScaleTransform"
                 RepeatBehavior="Forever">
@@ -88,7 +88,7 @@
                 </DoubleAnimation>
             </Storyboard>
 
-        <Storyboard x:Key="{x:Static help:AnimationResourcesKeys.BlackHoleMouseDownAnimationKey}"
+        <Storyboard x:Key="{x:Static keys:AnimationResourcesKeys.BlackHoleMouseDownAnimationKey}"
                     TargetName="BlackHole"
                     TargetProperty="ScaleTransform">
 
@@ -103,7 +103,7 @@
                 Duration="0:0:0.1"/>
         </Storyboard>
 
-        <Storyboard x:Key="{x:Static help:AnimationResourcesKeys.BlackHoleMouseUpAnimationKey}"
+        <Storyboard x:Key="{x:Static keys:AnimationResourcesKeys.BlackHoleMouseUpAnimationKey}"
                     TargetName="BlackHole"
                     TargetProperty="ScaleTransform">
 
