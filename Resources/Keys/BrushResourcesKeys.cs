@@ -50,6 +50,15 @@
 
         #endregion
 
+        #region CommonTextBox
+
+        public const string CommonTextBoxForegroundBrushKey = "CommonTextBoxForegroundBrush";
+        public const string CommonTextBoxBackgroundBrushKey = "CommonTextBoxBackgroundBrush";
+        public const string CommonTextBoxBorderBrushKey = "CommonTextBoxBorderBrush";
+        public const string CommonTextBoxCaretBrushKey = "CommonTextBoxCaretBrush";
+
+        #endregion
+
         #region ToolTip
 
         public const string ToolTipBackgroundBrushKey = "ToolTipBackgroundBrush";

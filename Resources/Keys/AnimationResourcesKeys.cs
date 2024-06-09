@@ -25,5 +25,12 @@
             "ParticleCanvasSpawnParticlesTipTextBlockVisibleOpacityAnimation";
 
         #endregion
+
+        #region Options
+
+        public const string OptionsFlyOutAnimationKey = "OptionsFlyOutAnimation";
+        public const string OptionsFlyInAnimationKey = "OptionsFlyInAnimationKey";
+
+        #endregion
     }
 }

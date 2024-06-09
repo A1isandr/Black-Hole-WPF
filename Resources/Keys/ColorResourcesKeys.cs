@@ -51,6 +51,15 @@
 
         #endregion
 
+        #region CommonTextBox
+
+        public const string CommonTextBoxForegroundColorKey = "CommonTextBoxForegroundColor";
+        public const string CommonTextBoxBackgroundColorKey = "CommonTextBoxBackgroundColor";
+        public const string CommonTextBoxBorderColorKey = "CommonTextBoxBorderColor";
+        public const string CommonTextBoxCaretColorKey = "CommonTextBoxCaretColor";
+
+        #endregion
+
         #region ToolTip
 
         public const string ToolTipBackgroundColorKey = "ToolTipBackgroundColor";

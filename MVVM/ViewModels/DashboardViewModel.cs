@@ -49,6 +49,10 @@ namespace Black_Hole.MVVM.ViewModels
         {
             _particlesService = particlesService;
 
+            var canLockUnlockDashboard = this
+                .WhenAnyValue(x => x.DashboardAnimationState)
+                .Select(state => state == DashboardAnimationState.Completed);
+
             StopStartSimulationCommand = ReactiveCommand.Create<Unit>(_ =>
             {
                 SimulationViewModel.Instance.StartStopSimulationCommand.Execute().Subscribe();
@@ -68,7 +72,7 @@ namespace Black_Hole.MVVM.ViewModels
                     DashboardState.Unlocked => DashboardState.Locked,
                     _ => DashboardState
                 };
-            });
+            }, canLockUnlockDashboard);
 
             _particlesService
                 .Connect()

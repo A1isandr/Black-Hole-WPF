@@ -16,4 +16,9 @@
     <system:String x:Key="{x:Static keys:TextResourcesKeys.DashboardSettingsButtonToolTipTextKey}">Settings</system:String>
 
     <system:String x:Key="{x:Static keys:TextResourcesKeys.ParticleCanvasSpawnParticlesTipTextBlockTextKey}">Click to spawn particles.</system:String>
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsGravitationalConstToolTipTextKey}">Gravitational constant</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsSpeedOfLightToolTipTextKey}">Speed of light</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsBlackHoleMassToolTipTextKey}">Black hole mass</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsDeltaTimeToolTipTextKey}">Delta time</system:String>
 </ResourceDictionary>

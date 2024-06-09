@@ -22,10 +22,14 @@
         <views:ParticlesHistoryCanvasView/>
 
         <views:ParticleCanvasView/>
-        
-        <views:BlackHoleView x:Name="BlackHole"/>
 
-        <views:DashboardView
+        <views:OptionsView x:Name="OptionsView"
+            Width="500"
+            Height="300"/>
+        
+        <views:BlackHoleView x:Name="BlackHoleView"/>
+
+        <views:DashboardView x:Name="DashboardView"
             VerticalAlignment="Bottom"
             HorizontalAlignment="Center"/>
     </Grid>

@@ -8,6 +8,7 @@
                                 xmlns:keys="clr-namespace:Black_Hole.Resources.Keys"
                                 xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
                                 xmlns:reactiveUi="http://reactiveui.net"
+                                xmlns:help="clr-namespace:Black_Hole.Helpers"
                                 x:TypeArguments="vm:DashboardViewModel"
                                 x:Name="Dashboard"
                                 mc:Ignorable="d" 
@@ -32,6 +33,8 @@
     </UserControl.Style>
 
     <UserControl.Resources>
+        <help:RectConverter x:Key="RectConverter"/>
+
         <Storyboard x:Key="{x:Static keys:AnimationResourcesKeys.DashboardFlyOutAnimationKey}"
                     TargetName="Dashboard"
                     TargetProperty="Margin">
@@ -132,6 +135,20 @@
             VerticalAlignment="Bottom"
             Padding="5">
 
+            <Border.Clip>
+                <RectangleGeometry 
+                    RadiusX="10"
+                    RadiusY="10">
+
+                    <RectangleGeometry.Rect>
+                        <MultiBinding Converter="{StaticResource RectConverter}">
+                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualWidth"/>
+                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualHeight"/>
+                        </MultiBinding>
+                    </RectangleGeometry.Rect>
+                </RectangleGeometry>
+            </Border.Clip>
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -166,7 +183,7 @@
 
                             <TextBlock x:Name="NumParticlesTextBlockToolTip"
                                 Text="{DynamicResource {x:Static keys:TextResourcesKeys.DashboardParticleCountToolTipTextKey}}"
-                                Style="{StaticResource ToolTipTextBlock}"/>
+                                Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
                         </ToolTip>
                     </TextBlock.ToolTip>
                 </TextBlock>
@@ -184,7 +201,7 @@
 
                             <TextBlock x:Name="ResetSimulationButtonToolTip"
                                Text="{DynamicResource {x:Static keys:TextResourcesKeys.DashboardResetButtonToolTipTextKey}}"
-                               Style="{StaticResource ToolTipTextBlock}"/>
+                               Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
                         </ToolTip>
                     </Button.ToolTip>
                 </Button>
@@ -202,7 +219,7 @@
 
                             <TextBlock x:Name="StopStartSimulationButtonToolTip"
                                Text="{DynamicResource {x:Static keys:TextResourcesKeys.DashboardStopStartButtonRunningToolTipTextKey}}"
-                               Style="{StaticResource ToolTipTextBlock}"/>
+                               Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
                         </ToolTip>
                     </Button.ToolTip>
                 </Button>
@@ -221,7 +238,7 @@
 
                             <TextBlock x:Name="SettingsButtonToolTip"
                                        Text="{DynamicResource {x:Static keys:TextResourcesKeys.DashboardSettingsButtonToolTipTextKey}}"
-                                       Style="{StaticResource ToolTipTextBlock}"/>
+                                       Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
                         </ToolTip>
                     </Button.ToolTip>
                 </Button>
@@ -250,7 +267,7 @@
 
                             <TextBlock x:Name="LockUnlockDashboardButtonToolTip"
                                Text="{DynamicResource {x:Static keys:TextResourcesKeys.DashboardLockUnlockButtonLockedToolTipTextKey}}"
-                               Style="{StaticResource ToolTipTextBlock}"/>
+                               Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
                         </ToolTip>
                     </Button.ToolTip>
                 </Button>

@@ -1,0 +1,371 @@
+﻿<reactiveUi:ReactiveUserControl x:Class="Black_Hole.MVVM.Views.OptionsView"
+                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                                xmlns:local="clr-namespace:Black_Hole.MVVM.Views"
+                                xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
+                                xmlns:keys="clr-namespace:Black_Hole.Resources.Keys"
+                                xmlns:help="clr-namespace:Black_Hole.Helpers"
+                                x:TypeArguments="vm:OptionsViewModel"
+                                xmlns:reactiveUi="http://reactiveui.net"
+                                x:Name="Options"
+                                mc:Ignorable="d" 
+                                d:DesignHeight="400" d:DesignWidth="400">
+
+    <UserControl.RenderTransformOrigin>
+        <Point
+            X="0.5"
+            Y="0.5"/>
+    </UserControl.RenderTransformOrigin>
+
+    <UserControl.RenderTransform>
+        <ScaleTransform
+            ScaleX="0"
+            ScaleY="0"/>
+    </UserControl.RenderTransform>
+
+    <UserControl.Resources>
+        <help:RectConverter x:Key="RectConverter"/>
+
+        <Storyboard x:Key="{x:Static keys:AnimationResourcesKeys.OptionsFlyOutAnimationKey}"
+                    TargetName="Options">
+            
+            <DoubleAnimation
+                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                To="1"
+                Duration="0:0:0.5">
+                
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase
+                        EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation
+                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                To="1"
+                Duration="0:0:0.5">
+
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase
+                        EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="{x:Static keys:AnimationResourcesKeys.OptionsFlyInAnimationKey}"
+                    TargetName="Options">
+
+            <DoubleAnimation
+                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                To="0"
+                Duration="0:0:0.5">
+
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase
+                        EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation
+                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                To="0"
+                Duration="0:0:0.5">
+
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase
+                        EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Border
+        Background="Transparent">
+
+        <Border.Effect>
+            <DropShadowEffect
+                ShadowDepth="0"
+                BlurRadius="50"
+                Color="Black"
+                Opacity="0.5"/>
+        </Border.Effect>
+
+        <Grid>
+            <Border
+                CornerRadius="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Background="GhostWhite">
+
+                <Border.Clip>
+                    <RectangleGeometry 
+                        RadiusX="10"
+                        RadiusY="10">
+
+                        <RectangleGeometry.Rect>
+                            <MultiBinding Converter="{StaticResource RectConverter}">
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualWidth"/>
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualHeight"/>
+                            </MultiBinding>
+                        </RectangleGeometry.Rect>
+                    </RectangleGeometry>
+                </Border.Clip>
+
+                <Border.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-50">
+
+                        <TextBlock
+                            Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsGravitationalConstToolTipTextKey}}"
+                            Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
+                    </ToolTip>
+                </Border.ToolTip>
+
+                <StackPanel
+                    Orientation="Vertical">
+
+                    <TextBlock
+                        Text="Language"
+                        FontSize="18"
+                        FontWeight="Medium"
+                        Margin="10, 0, 10, 10"/>
+
+                    <ComboBox/>
+                </StackPanel>
+            </Border>
+
+            <Border
+                CornerRadius="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Background="GhostWhite">
+
+                <Border.Clip>
+                    <RectangleGeometry 
+                        RadiusX="10"
+                        RadiusY="10">
+
+                        <RectangleGeometry.Rect>
+                            <MultiBinding Converter="{StaticResource RectConverter}">
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualWidth"/>
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualHeight"/>
+                            </MultiBinding>
+                        </RectangleGeometry.Rect>
+                    </RectangleGeometry>
+                </Border.Clip>
+
+                <Border.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-50">
+
+                        <TextBlock
+                            Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsGravitationalConstToolTipTextKey}}"
+                            Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
+                    </ToolTip>
+                </Border.ToolTip>
+
+                <StackPanel
+                    Orientation="Vertical">
+
+                    <TextBlock
+                        Text="Theme"
+                        FontSize="18"
+                        FontWeight="Medium"
+                        Margin="10, 0, 10, 10"/>
+
+                    <ComboBox/>
+                </StackPanel>
+            </Border>
+
+            <Border
+                CornerRadius="10"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Background="GhostWhite"
+                Margin="0, 0, 50, 0">
+
+                <Border.Clip>
+                    <RectangleGeometry 
+                        RadiusX="10"
+                        RadiusY="10">
+
+                        <RectangleGeometry.Rect>
+                            <MultiBinding Converter="{StaticResource RectConverter}">
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualWidth"/>
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualHeight"/>
+                            </MultiBinding>
+                        </RectangleGeometry.Rect>
+                    </RectangleGeometry>
+                </Border.Clip>
+
+                <Border.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-50">
+
+                        <TextBlock
+                                   Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsGravitationalConstToolTipTextKey}}"
+                                   Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
+                    </ToolTip>
+                </Border.ToolTip>
+
+                <StackPanel
+                    Orientation="Vertical">
+                    
+                    <TextBlock
+                        Text="G"
+                        Style="{DynamicResource {x:Static keys:StyleResourcesKeys.OptionsTextBlockStyleKey}}"
+                        Margin="10, 0, 10, 0"/>
+
+                    <TextBox
+                        Width="100"
+                        Height="30"
+                        TextAlignment="Center"
+                        Style="{DynamicResource {x:Static keys:StyleResourcesKeys.CommonTextBoxStyleKey}}"/>
+                </StackPanel>
+            </Border>
+
+            <Border
+                CornerRadius="10"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Background="GhostWhite"
+                Margin="50, 0, 0, 0">
+
+                <Border.Clip>
+                    <RectangleGeometry 
+                        RadiusX="10"
+                        RadiusY="10">
+
+                        <RectangleGeometry.Rect>
+                            <MultiBinding Converter="{StaticResource RectConverter}">
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualWidth"/>
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualHeight"/>
+                            </MultiBinding>
+                        </RectangleGeometry.Rect>
+                    </RectangleGeometry>
+                </Border.Clip>
+
+                <Border.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-50">
+
+                        <TextBlock
+                            Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsSpeedOfLightToolTipTextKey}}"
+                            Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
+                    </ToolTip>
+                </Border.ToolTip>
+
+                <StackPanel
+                    Orientation="Vertical">
+
+                    <TextBlock
+                        Text="c"
+                        Style="{DynamicResource {x:Static keys:StyleResourcesKeys.OptionsTextBlockStyleKey}}"
+                        Margin="10, 0, 10, 0"/>
+
+                    <TextBox
+                        Width="100"
+                        Height="30"
+                        TextAlignment="Center"
+                        Style="{DynamicResource {x:Static keys:StyleResourcesKeys.CommonTextBoxStyleKey}}"/>
+                </StackPanel>
+            </Border>
+
+            <Border
+                CornerRadius="10"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Background="GhostWhite"
+                Margin="0, 0, 50, 0">
+
+                <Border.Clip>
+                    <RectangleGeometry 
+                        RadiusX="10"
+                        RadiusY="10">
+
+                        <RectangleGeometry.Rect>
+                            <MultiBinding Converter="{StaticResource RectConverter}">
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualWidth"/>
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualHeight"/>
+                            </MultiBinding>
+                        </RectangleGeometry.Rect>
+                    </RectangleGeometry>
+                </Border.Clip>
+
+                <Border.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-50">
+
+                        <TextBlock
+                            Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsBlackHoleMassToolTipTextKey}}"
+                            Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
+                    </ToolTip>
+                </Border.ToolTip>
+
+                <StackPanel
+                    Orientation="Vertical">
+
+                    <TextBlock
+                        Text="m"
+                        Style="{DynamicResource {x:Static keys:StyleResourcesKeys.OptionsTextBlockStyleKey}}"
+                        Margin="10, 0, 10, 0"/>
+
+                    <TextBox
+                        Width="100"
+                        Height="30"
+                        TextAlignment="Center"
+                        Style="{DynamicResource {x:Static keys:StyleResourcesKeys.CommonTextBoxStyleKey}}"/>
+                </StackPanel>
+            </Border>
+
+            <Border
+                CornerRadius="10"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Background="GhostWhite"
+                Margin="50, 0, 0, 0">
+
+                <Border.Clip>
+                    <RectangleGeometry 
+                        RadiusX="10"
+                        RadiusY="10">
+
+                        <RectangleGeometry.Rect>
+                            <MultiBinding Converter="{StaticResource RectConverter}">
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualWidth"/>
+                                <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}" Path="ActualHeight"/>
+                            </MultiBinding>
+                        </RectangleGeometry.Rect>
+                    </RectangleGeometry>
+                </Border.Clip>
+
+                <Border.ToolTip>
+                    <ToolTip
+                        VerticalOffset="-50">
+
+                        <TextBlock
+                            Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsDeltaTimeToolTipTextKey}}"
+                            Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
+                    </ToolTip>
+                </Border.ToolTip>
+
+                <StackPanel
+                    Orientation="Vertical">
+
+                    <TextBlock
+                        Text="Δt"
+                        Style="{DynamicResource {x:Static keys:StyleResourcesKeys.OptionsTextBlockStyleKey}}"
+                        Margin="10, 0, 10, 0"/>
+
+                    <TextBox
+                        Width="100"
+                        Height="30"
+                        TextAlignment="Center"
+                        Style="{DynamicResource {x:Static keys:StyleResourcesKeys.CommonTextBoxStyleKey}}"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</reactiveUi:ReactiveUserControl>

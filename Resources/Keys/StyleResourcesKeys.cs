@@ -14,6 +14,13 @@
         #region TextBlocks
 
         public const string ToolTipTextBlockStyleKey = "ToolTipTextBlockStyle";
+        public const string OptionsTextBlockStyleKey = "OptionsTextBlockStyle";
+
+        #endregion
+
+        #region TextBoxes
+
+        public const string CommonTextBoxStyleKey = "CommonTextBoxStyle";
 
         #endregion
     }

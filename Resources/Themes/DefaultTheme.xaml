@@ -60,6 +60,20 @@
             White
         </Color>
 
+        <!--CommonTextBox-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.CommonTextBoxForegroundColorKey}">
+            Black
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.CommonTextBoxBackgroundColorKey}">
+            GhostWhite
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.CommonTextBoxBorderColorKey}">
+            Black
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.CommonTextBoxCaretColorKey}">
+            Black
+        </Color>
+
         <!--ToolTip-->
         <Color x:Key="{x:Static keys:ColorResourcesKeys.ToolTipBackgroundColorKey}">
             Black
@@ -109,6 +123,16 @@
                              Color="{DynamicResource {x:Static keys:ColorResourcesKeys.PrimaryButtonBorderColorKey}}"/>
             <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.PrimaryButtonMouseOverBackgroundBrushKey}"
                              Color="{DynamicResource {x:Static keys:ColorResourcesKeys.PrimaryButtonMouseOverBackgroundColorKey}}"/>
+
+            <!--CommonTextBox-->
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.CommonTextBoxForegroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.CommonTextBoxForegroundColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.CommonTextBoxBackgroundBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.CommonTextBoxBackgroundColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.CommonTextBoxBorderBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.CommonTextBoxBorderColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.CommonTextBoxCaretBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.CommonTextBoxCaretColorKey}}"/>
 
             <!--SvgButton-->
             <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.SvgButtonFillBrushKey}"

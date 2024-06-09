@@ -21,6 +21,7 @@
 
                 <ResourceDictionary Source="/Resources/Styles/Button.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/TextBlock.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/TextBox.xaml"/>   
                 <ResourceDictionary Source="/Resources/Styles/ScrollViewer.xaml"/>
                 <ResourceDictionary Source="/Resources/Styles/ToolTip.xaml"/>
 

@@ -8,6 +8,8 @@
 
         public static readonly System.Uri TextBlockStyleUri = new(BaseUri + "TextBlock.xaml");
 
+        public static readonly System.Uri TextBoxStyleUri = new(BaseUri + "TextBox.xaml");
+
         public static readonly System.Uri LabelStyleUri = new(BaseUri + "Label.xaml");
     }
 }
