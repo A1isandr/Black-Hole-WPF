@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,8 +14,11 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Black_Hole.MVVM.Models;
 using Black_Hole.MVVM.ViewModels;
 using Black_Hole.Resources.Keys;
+using Black_Hole.Resources.Uri;
+using ReactiveMarbles.ObservableEvents;
 using ReactiveUI;
 
 namespace Black_Hole.MVVM.Views
@@ -35,6 +39,67 @@ namespace Black_Hole.MVVM.Views
 
             OptionsFlyOutAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.OptionsFlyOutAnimationKey);
             OptionsFlyInAnimation = (Storyboard)TryFindResource(AnimationResourcesKeys.OptionsFlyInAnimationKey);
+
+            this.WhenActivated(disposables =>
+            {
+                this.Bind(ViewModel,
+                        viewModel => viewModel.C,
+                        view => view.SpeedOfLightTextBox.Text)
+                    .DisposeWith(disposables);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.G,
+                        view => view.GravitationalConstTextBox.Text)
+                    .DisposeWith(disposables);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.DeltaTime,
+                        view => view.DeltaTimeTextBox.Text)
+                    .DisposeWith(disposables);
+
+                this.Bind(ViewModel,
+                        viewModel => viewModel.BlackHoleMass,
+                        view => view.BlackHoleMassTextBox.Text)
+                    .DisposeWith(disposables);
+
+                ThemesCombobox
+                    .Events()
+                    .SelectionChanged
+                    .Subscribe(e =>
+                    {
+                        var app = (App)Application.Current;
+
+                        switch (((TextBlock)ThemesCombobox.SelectedItem).Text)
+                        {
+                            case "Black hole":
+                                app.ChangeTheme(ThemeResourceDictionariesUri.BlackHoleThemeUri);
+                                break;
+                            case "White hole":
+                                app.ChangeTheme(ThemeResourceDictionariesUri.WhiteHoleThemeUri);
+                                break;
+                        }
+                    })
+                    .DisposeWith(disposables);
+
+                LanguagesCombobox
+                    .Events()
+                    .SelectionChanged
+                    .Subscribe(e =>
+                    {
+                        var app = (App)Application.Current;
+
+                        switch (((TextBlock)LanguagesCombobox.SelectedItem).Text)
+                        {
+                            case "English":
+                                app.ChangeLanguage(LanguageResourceDictionariesUri.EnglishUsLanguageUri);
+                                break;
+                            case "Русский":
+                                app.ChangeLanguage(LanguageResourceDictionariesUri.RussianLanguageUri);
+                                break;
+                        }
+                    })
+                    .DisposeWith(disposables);
+            });
         }
     }
 }

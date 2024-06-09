@@ -26,7 +26,11 @@ namespace Black_Hole.Services
 
         public void SpawnParticle(Point coords)
         {
-            var particle = new Particle(new Vector2((float)coords.X, (float)coords.Y));
+            var particle = new Particle
+            (
+                (SimulationService)App.ServiceProvider!.GetService(typeof(ISimulationService))!, 
+                new Vector2((float)coords.X, (float)coords.Y)
+            );
             _particles.Add(particle);
         }
 

@@ -6,6 +6,7 @@
                                 xmlns:local="clr-namespace:Black_Hole.MVVM.Views"
                                 xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
                                 xmlns:keys="clr-namespace:Black_Hole.Resources.Keys"
+                                xmlns:lang="clr-namespace:Black_Hole"
                                 xmlns:help="clr-namespace:Black_Hole.Helpers"
                                 x:TypeArguments="vm:OptionsViewModel"
                                 xmlns:reactiveUi="http://reactiveui.net"
@@ -113,26 +114,25 @@
                     </RectangleGeometry>
                 </Border.Clip>
 
-                <Border.ToolTip>
-                    <ToolTip
-                        VerticalOffset="-50">
-
-                        <TextBlock
-                            Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsGravitationalConstToolTipTextKey}}"
-                            Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
-                    </ToolTip>
-                </Border.ToolTip>
-
                 <StackPanel
                     Orientation="Vertical">
 
                     <TextBlock
-                        Text="Language"
+                        Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsLanguageTextKey}}"
                         FontSize="18"
                         FontWeight="Medium"
+                        TextAlignment="Center"
                         Margin="10, 0, 10, 10"/>
 
-                    <ComboBox/>
+                    <ComboBox x:Name="LanguagesCombobox"
+                              SelectedIndex="0">
+
+                        <TextBlock
+                            Text="English"/>
+
+                        <TextBlock
+                            Text="Русский"/>
+                    </ComboBox>
                 </StackPanel>
             </Border>
 
@@ -156,26 +156,25 @@
                     </RectangleGeometry>
                 </Border.Clip>
 
-                <Border.ToolTip>
-                    <ToolTip
-                        VerticalOffset="-50">
-
-                        <TextBlock
-                            Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsGravitationalConstToolTipTextKey}}"
-                            Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
-                    </ToolTip>
-                </Border.ToolTip>
-
                 <StackPanel
                     Orientation="Vertical">
 
                     <TextBlock
-                        Text="Theme"
+                        Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsThemeTextKey}}"
+                        TextAlignment="Center"
                         FontSize="18"
                         FontWeight="Medium"
                         Margin="10, 0, 10, 10"/>
 
-                    <ComboBox/>
+                    <ComboBox x:Name="ThemesCombobox"
+                              SelectedIndex="0">
+
+                        <TextBlock
+                            Text="Black hole"/>
+
+                        <TextBlock
+                            Text="White hole"/>
+                    </ComboBox>
                 </StackPanel>
             </Border>
 
@@ -205,8 +204,8 @@
                         VerticalOffset="-50">
 
                         <TextBlock
-                                   Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsGravitationalConstToolTipTextKey}}"
-                                   Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
+                           Text="{DynamicResource {x:Static keys:TextResourcesKeys.SettingsGravitationalConstToolTipTextKey}}"
+                           Style="{DynamicResource {x:Static keys:StyleResourcesKeys.ToolTipTextBlockStyleKey}}"/>
                     </ToolTip>
                 </Border.ToolTip>
 
@@ -218,7 +217,7 @@
                         Style="{DynamicResource {x:Static keys:StyleResourcesKeys.OptionsTextBlockStyleKey}}"
                         Margin="10, 0, 10, 0"/>
 
-                    <TextBox
+                    <TextBox x:Name="GravitationalConstTextBox"
                         Width="100"
                         Height="30"
                         TextAlignment="Center"
@@ -265,7 +264,7 @@
                         Style="{DynamicResource {x:Static keys:StyleResourcesKeys.OptionsTextBlockStyleKey}}"
                         Margin="10, 0, 10, 0"/>
 
-                    <TextBox
+                    <TextBox x:Name="SpeedOfLightTextBox"
                         Width="100"
                         Height="30"
                         TextAlignment="Center"
@@ -312,7 +311,7 @@
                         Style="{DynamicResource {x:Static keys:StyleResourcesKeys.OptionsTextBlockStyleKey}}"
                         Margin="10, 0, 10, 0"/>
 
-                    <TextBox
+                    <TextBox x:Name="BlackHoleMassTextBox"
                         Width="100"
                         Height="30"
                         TextAlignment="Center"
@@ -359,7 +358,7 @@
                         Style="{DynamicResource {x:Static keys:StyleResourcesKeys.OptionsTextBlockStyleKey}}"
                         Margin="10, 0, 10, 0"/>
 
-                    <TextBox
+                    <TextBox x:Name="DeltaTimeTextBox"
                         Width="100"
                         Height="30"
                         TextAlignment="Center"

@@ -9,7 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="ThemeDictionary">
                     <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="{x:Static uri:ThemeResourceDictionariesUri.DefaultThemeUri}"/>
+                        <ResourceDictionary Source="{x:Static uri:ThemeResourceDictionariesUri.BlackHoleThemeUri}"/>
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
 

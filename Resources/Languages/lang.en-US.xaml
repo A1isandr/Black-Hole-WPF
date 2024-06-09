@@ -21,4 +21,6 @@
     <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsSpeedOfLightToolTipTextKey}">Speed of light</system:String>
     <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsBlackHoleMassToolTipTextKey}">Black hole mass</system:String>
     <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsDeltaTimeToolTipTextKey}">Delta time</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsThemeTextKey}">Theme</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsLanguageTextKey}">Language</system:String>
 </ResourceDictionary>

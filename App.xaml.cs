@@ -4,6 +4,7 @@ using System.Data;
 using System.Reflection;
 using System.Text;
 using System.Windows;
+using Black_Hole.MVVM.Models;
 using Black_Hole.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +21,11 @@ namespace Black_Hole
 
 		public IConfiguration? Configuration { get; private set; }
 
-		public App()
+        public Uri CurrentTheme => Resources.MergedDictionaries[0].MergedDictionaries[0].Source;
+
+        public Uri CurrentLanguage => Resources.MergedDictionaries[1].MergedDictionaries[0].Source;
+
+        public App()
 		{
 			Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
 		}
@@ -35,11 +40,26 @@ namespace Black_Hole
 			mainWindow.Show();
         }
 
-        private void ConfigureServices(ServiceCollection serviceCollection)
+        private static void ConfigureServices(ServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient(typeof(MainWindow));
             serviceCollection.AddSingleton<IParticlesService, ParticlesService>();
             serviceCollection.AddSingleton<IParticlesHistoryService, ParticlesHistoryService>();
+            serviceCollection.AddSingleton<ISimulationService, SimulationService>();
         }
-	}
+
+        public void ChangeTheme(Uri uri)
+        {
+            var themeDictionary = Resources.MergedDictionaries[0];
+            themeDictionary.MergedDictionaries.Clear();
+            themeDictionary.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
+        }
+
+        public void ChangeLanguage(Uri uri)
+        {
+            var themeDictionary = Resources.MergedDictionaries[1];
+            themeDictionary.MergedDictionaries.Clear();
+            themeDictionary.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
+        }
+    }
 }

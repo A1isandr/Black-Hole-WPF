@@ -22,7 +22,12 @@ namespace Black_Hole.MVVM.ViewModels
         {
             get
             {
-                _instance ??= new BlackHoleViewModel(new BlackHole((ParticlesService)App.ServiceProvider!.GetService(typeof(IParticlesService))!));
+                _instance ??= new BlackHoleViewModel(new BlackHole
+                (
+                    (SimulationService)App.ServiceProvider!.GetService(typeof(ISimulationService))!,
+                    (ParticlesService)App.ServiceProvider.GetService(typeof(IParticlesService))!
+                ));
+
                 return _instance;
             }
         }

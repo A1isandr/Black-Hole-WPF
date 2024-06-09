@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:keys="clr-namespace:Black_Hole.Resources.Keys">
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.DashboardStopStartButtonRunningToolTipTextKey}">Остановить симуляцию</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.DashboardStopStartButtonStoppedToolTipTextKey}">Запустить симуляцию</system:String>
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.DashboardResetButtonToolTipTextKey}">Перезапустить симуляцию</system:String>
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.DashboardLockUnlockButtonLockedToolTipTextKey}">Открепить панель</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.DashboardLockUnlockButtonUnlockedToolTipTextKey}">Закрепить панель</system:String>
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.DashboardParticleCountToolTipTextKey}">Частицы</system:String>
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.DashboardSettingsButtonToolTipTextKey}">Настройки</system:String>
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.ParticleCanvasSpawnParticlesTipTextBlockTextKey}">Кликните, чтобы создать частицы.</system:String>
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsGravitationalConstToolTipTextKey}">Гравитационная постоянная</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsSpeedOfLightToolTipTextKey}">Скорость света</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsBlackHoleMassToolTipTextKey}">Масса черной дыры</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsDeltaTimeToolTipTextKey}">Промежуток времени</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsThemeTextKey}">Тема</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsLanguageTextKey}">Язык</system:String>
+</ResourceDictionary>

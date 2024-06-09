@@ -24,7 +24,7 @@
                     <DropShadowEffect
                         BlurRadius="70"
                         ShadowDepth="0"
-                        Color="Black"
+                        Color="{DynamicResource {x:Static keys:ColorResourcesKeys.BlackHoleShadowColorKey}}"
                         Opacity="1"/>
                 </Setter.Value>
             </Setter>
@@ -139,7 +139,7 @@
         <Ellipse x:Name="BlackHole"
             Width="200"
             Height="200"
-            Fill="Black">
+            Fill="{DynamicResource {x:Static keys:SolidColorBrushResourcesKeys.BlackHoleBrushKey}}">
 
             <Ellipse.RenderTransform>
                 <ScaleTransform

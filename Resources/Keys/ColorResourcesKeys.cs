@@ -73,5 +73,12 @@
         public const string TertiaryAccentColorKey = "TertiaryAccentColor";
 
         #endregion
+
+        #region Black Hole
+
+        public const string BlackHoleColorKey = "BlackHoleColor";
+        public const string BlackHoleShadowColorKey = "BlackHoleShadowColor";
+
+        #endregion
     }
 }

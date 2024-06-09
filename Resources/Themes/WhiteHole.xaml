@@ -5,12 +5,12 @@
     <!--Colors-->
         <!--MainWindowTitle-->
         <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowTitleForegroundColorKey}">
-            Black
+            GhostWhite
         </Color>
 
         <!--MainWindowWrapper-->
         <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowWrapperBackgroundColorKey}">
-            GhostWhite
+            Black
         </Color>
         <Color x:Key="{x:Static keys:ColorResourcesKeys.MainWindowWrapperBorderColorKey}">
             #1a1a1a
@@ -90,6 +90,14 @@
             DeepSkyBlue
         </Color>
 
+        <!--Black Hole-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.BlackHoleColorKey}">
+            GhostWhite
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.BlackHoleShadowColorKey}">
+            GhostWhite
+        </Color>
+
     <!--Brushes-->
         <!--SolidColorBrushes-->
             <!--MainWindowTitle-->
@@ -151,5 +159,9 @@
             <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.SecondaryAccentBrushKey}"
                              Color="{DynamicResource {x:Static keys:ColorResourcesKeys.SecondaryAccentColorKey}}"/>
             <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.TertiaryAccentBrushKey}"
-                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.TertiaryAccentColorKey}}"/>   
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.TertiaryAccentColorKey}}"/>
+
+            <!--Black Hole-->
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.BlackHoleBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.BlackHoleColorKey}}"/>
 </ResourceDictionary>

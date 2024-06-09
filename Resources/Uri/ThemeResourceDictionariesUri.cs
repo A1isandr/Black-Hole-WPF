@@ -4,8 +4,8 @@
     {
         private static readonly System.Uri BaseUri = new("pack://application:,,,/Black Hole;component/Resources/Themes/");
 
-        public static readonly System.Uri DefaultThemeUri = new(BaseUri + "DefaultTheme.xaml");
+        public static readonly System.Uri BlackHoleThemeUri = new(BaseUri + "BlackHole.xaml");
 
-        public static readonly System.Uri DarkThemeUri = new(BaseUri + "DarkTheme.xaml");
+        public static readonly System.Uri WhiteHoleThemeUri = new(BaseUri + "WhiteHole.xaml");
     }
 }

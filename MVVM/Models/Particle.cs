@@ -15,16 +15,29 @@ using ReactiveUI.Fody.Helpers;
 
 namespace Black_Hole.MVVM.Models
 {
-    public class Particle(Vector2 coords) : ReactiveObject
+    public class Particle : ReactiveObject
     {
         #region Properties
 
-        [Reactive]
-        public Vector2 Position { get; private set; } = coords;
+        private readonly ISimulationService _simulationService;
 
-        public Vector2 Velocity { get; set; } = new(-Simulation.C, 0);
+        [Reactive]
+        public Vector2 Position { get; private set; }
+
+        public Vector2 Velocity { get; set; }
 
         public float Theta { get; set; } = float.Pi;
+
+        #endregion
+
+        #region Constructors
+
+        public Particle(ISimulationService simulationService, Vector2 coords)
+        {
+            _simulationService = simulationService;
+            Position = coords;
+            Velocity = new Vector2(-_simulationService.C, 0);
+        }
 
         #endregion
 
@@ -32,7 +45,7 @@ namespace Black_Hole.MVVM.Models
 
         public void Update()
         {
-            Position += Velocity * Simulation.DeltaTime;
+            Position += Velocity * _simulationService.DeltaTime;
         }
 
         #endregion

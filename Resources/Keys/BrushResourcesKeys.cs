@@ -72,6 +72,12 @@
         public const string TertiaryAccentBrushKey = "TertiaryAccentBrush";
 
         #endregion
+
+        #region Black Hole
+
+        public const string BlackHoleBrushKey = "BlackHoleBrush";
+
+        #endregion
     }
 
     internal struct LinearGradientBrushResourcesKeys

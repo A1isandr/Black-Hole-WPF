@@ -30,6 +30,8 @@
         public const string SettingsSpeedOfLightToolTipTextKey = "SettingsSpeedOfLightToolTipText";
         public const string SettingsBlackHoleMassToolTipTextKey = "SettingsBlackHoleMassToolTipText";
         public const string SettingsDeltaTimeToolTipTextKey = "SettingsDeltaTimeToolTipText";
+        public const string SettingsThemeTextKey = "SettingsThemeText";
+        public const string SettingsLanguageTextKey = "SettingsLanguageText";
 
         #endregion
     }

@@ -27,6 +27,7 @@ namespace Black_Hole.MVVM.ViewModels
             {
                 _instance ??= new SimulationViewModel
                     (
+                        (SimulationService)App.ServiceProvider!.GetService(typeof(ISimulationService))!,
                         (ParticlesService)App.ServiceProvider!.GetService(typeof(IParticlesService))!,
                         (ParticlesHistoryService)App.ServiceProvider!.GetService(typeof(IParticlesHistoryService))!
                     );
@@ -39,7 +40,7 @@ namespace Black_Hole.MVVM.ViewModels
 
         #region Properties
 
-        private readonly Simulation _simulation;
+        private readonly ISimulationService _simulationService;
 
         private readonly IParticlesService _particlesService;
 
@@ -62,18 +63,18 @@ namespace Black_Hole.MVVM.ViewModels
 
         #region Constructors
 
-        private SimulationViewModel(IParticlesService particlesService, IParticlesHistoryService particlesHistoryService)
+        private SimulationViewModel(ISimulationService simulationService, IParticlesService particlesService, IParticlesHistoryService particlesHistoryService)
         {
             _particlesService = particlesService;
             _particlesHistoryService = particlesHistoryService;
 
-            _simulation = new Simulation(_particlesService);
+            _simulationService = simulationService;
 
             StartStopSimulationCommand = ReactiveCommand.Create<Unit>(_ =>
             {
-                if (_simulation.IsRunning)
+                if (_simulationService.IsRunning)
                 {
-                    _simulation.Stop();
+                    _simulationService.Stop();
                     _particlesHistoryService.Stop();
                     SimulationState = SimulationState.Stopped;
                 }
@@ -83,7 +84,7 @@ namespace Black_Hole.MVVM.ViewModels
 
                     RxApp.TaskpoolScheduler.Schedule(_ =>
                     {
-                        _simulation.Run();
+                        _simulationService.Run();
                     });
 
                     _particlesHistoryService.Start();

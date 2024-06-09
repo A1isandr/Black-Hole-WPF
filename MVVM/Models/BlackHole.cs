@@ -7,17 +7,22 @@ using System.Threading.Tasks;
 using System.Windows;
 using Black_Hole.Helpers;
 using Black_Hole.Services;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace Black_Hole.MVVM.Models
 {
-    public class BlackHole
+    public class BlackHole : ReactiveObject
     {
         #region Properties
 
+        private readonly ISimulationService _simulationService;
+
         private readonly IParticlesService _particlesService;
 
-        public Vector2 Position { get; set; } = new((float)Application.Current.MainWindow!.ActualWidth / 2f, (float)Application.Current.MainWindow.ActualHeight / 2f);
+        private Vector2 Position { get; set; } = new((float)Application.Current.MainWindow!.ActualWidth / 2f, (float)Application.Current.MainWindow.ActualHeight / 2f);
 
+        [Reactive]
         public int Mass { get; set; } = 1000;
 
         public float Rs { get; set; }
@@ -26,11 +31,13 @@ namespace Black_Hole.MVVM.Models
 
         #region Constructors
 
-        public BlackHole(IParticlesService particlesService)
+        public BlackHole(ISimulationService simulationService, IParticlesService particlesService)
         {
+            _simulationService = simulationService;
+
             _particlesService = particlesService;
 
-            Rs = (2 * Simulation.G * Mass) / (Simulation.C * Simulation.C);
+            Rs = (2 * _simulationService.G * Mass) / (_simulationService.C * _simulationService.C);
 
             Application.Current.MainWindow!.SizeChanged += (_, _) =>
             {
@@ -47,9 +54,9 @@ namespace Black_Hole.MVVM.Models
             var force = Position - particle.Position;
             var theta = force.Heading();
             var r = force.Magnitude();
-            var gravityForce = Simulation.G * Mass / (r * r);
-            var deltaTheta = -gravityForce * (Simulation.DeltaTime / Simulation.C) * MathF.Sin(particle.Theta - theta);
-            deltaTheta /= MathF.Abs(1.0f - (2.0f * Simulation.G * Mass) / (r * Simulation.C * Simulation.C));
+            var gravityForce = _simulationService.G * Mass / (r * r);
+            var deltaTheta = -gravityForce * (_simulationService.DeltaTime / _simulationService.C) * MathF.Sin(particle.Theta - theta);
+            deltaTheta /= MathF.Abs(1.0f - (2.0f * _simulationService.G * Mass) / (r * _simulationService.C * _simulationService.C));
             particle.Theta += deltaTheta;
             particle.Velocity = Vector2Extensions.FromAngle(particle.Theta);
 
