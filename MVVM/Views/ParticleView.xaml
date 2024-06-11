@@ -4,6 +4,7 @@
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                                 xmlns:local="clr-namespace:Black_Hole.MVVM.Views"
+                                xmlns:keys="clr-namespace:Black_Hole.Resources.Keys"
                                 xmlns:reactiveUi="http://reactiveui.net"
                                 xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
                                 x:TypeArguments="vm:ParticleViewModel"
@@ -25,7 +26,7 @@
                     <DropShadowEffect
                         BlurRadius="10"
                         ShadowDepth="0"
-                        Color="Black"
+                        Color="{DynamicResource {x:Static keys:ColorResourcesKeys.ParticleShadowColorKey}}"
                         Opacity="0.5"/>
                 </Setter.Value>
             </Setter>
@@ -36,8 +37,8 @@
                         <Ellipse
                             Width="20"
                             Height="20"
-                            Fill="GhostWhite"
-                            Stroke="Black"
+                            Fill="{DynamicResource {x:Static keys:SolidColorBrushResourcesKeys.ParticleBrushKey}}"
+                            Stroke="{DynamicResource {x:Static keys:SolidColorBrushResourcesKeys.ParticleBorderBrushKey}}"
                             StrokeThickness="1.5"/>
                     </ControlTemplate>
                 </Setter.Value>

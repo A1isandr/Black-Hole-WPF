@@ -80,5 +80,25 @@
         public const string BlackHoleShadowColorKey = "BlackHoleShadowColor";
 
         #endregion
+
+        #region Particle
+
+        public const string ParticleColorKey = "ParticleColor";
+        public const string ParticleBorderColorKey = "ParticleBorderColor";
+        public const string ParticleShadowColorKey = "ParticleShadowColor";
+
+        #endregion
+
+        #region Particle History
+
+        public const string ParticleHistoryColorKey = "ParticleHistoryColor";
+
+        #endregion
+
+        #region Other Shadows
+
+        public const string OtherShadowsColorKey = "OtherShadowsColor";
+
+        #endregion
     }
 }

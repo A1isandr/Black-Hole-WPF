@@ -23,4 +23,7 @@
     <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsDeltaTimeToolTipTextKey}">Delta time</system:String>
     <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsThemeTextKey}">Theme</system:String>
     <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsLanguageTextKey}">Language</system:String>
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.BlackHoleThemeTextKey}">Black hole</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.WhiteHoleThemeTextKey}">White hole</system:String>
 </ResourceDictionary>

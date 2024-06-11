@@ -4,6 +4,7 @@
                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                                 xmlns:local="clr-namespace:Black_Hole.MVVM.Views"
+                                xmlns:keys="clr-namespace:Black_Hole.Resources.Keys"
                                 xmlns:reactiveUi="http://reactiveui.net"
                                 xmlns:vm="clr-namespace:Black_Hole.MVVM.ViewModels"
                                 x:TypeArguments="vm:ParticleHistoryViewModel"
@@ -21,7 +22,7 @@
                         <Ellipse
                             Width="5"
                             Height="5"
-                            Fill="Black"/>
+                            Fill="{DynamicResource {x:Static keys:SolidColorBrushResourcesKeys.ParticleHistoryBrushKey}}"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

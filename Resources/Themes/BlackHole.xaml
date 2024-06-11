@@ -97,6 +97,27 @@
         <Color x:Key="{x:Static keys:ColorResourcesKeys.BlackHoleShadowColorKey}">
             Black
         </Color>
+    
+        <!--Particle-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.ParticleColorKey}">
+            GhostWhite
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.ParticleBorderColorKey}">
+            Black
+        </Color>
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.ParticleShadowColorKey}">
+            Black
+        </Color>
+
+        <!--ParticleHistory-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.ParticleHistoryColorKey}">
+            Black
+        </Color>
+
+        <!--OtherShadows-->
+        <Color x:Key="{x:Static keys:ColorResourcesKeys.OtherShadowsColorKey}">
+            Black
+        </Color>
 
     <!--Brushes-->
         <!--SolidColorBrushes-->
@@ -164,4 +185,14 @@
             <!--Black Hole-->
             <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.BlackHoleBrushKey}"
                              Color="{DynamicResource {x:Static keys:ColorResourcesKeys.BlackHoleColorKey}}"/>
+
+            <!--Particle-->
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.ParticleBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.ParticleColorKey}}"/>
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.ParticleBorderBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.ParticleBorderColorKey}}"/>
+
+            <!--ParticleHistory-->
+            <SolidColorBrush x:Key="{x:Static keys:SolidColorBrushResourcesKeys.ParticleHistoryBrushKey}"
+                             Color="{DynamicResource {x:Static keys:ColorResourcesKeys.ParticleHistoryColorKey}}"/>
 </ResourceDictionary>

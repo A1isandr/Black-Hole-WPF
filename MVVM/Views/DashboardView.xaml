@@ -24,7 +24,7 @@
                     <DropShadowEffect
                         ShadowDepth="0"
                         BlurRadius="50"
-                        Color="Black"
+                        Color="{DynamicResource {x:Static keys:ColorResourcesKeys.OtherShadowsColorKey}}"
                         Opacity="0.5"/>
                 </Setter.Value>
             </Setter>

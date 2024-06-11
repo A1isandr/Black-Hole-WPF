@@ -69,14 +69,16 @@ namespace Black_Hole.MVVM.Views
                     {
                         var app = (App)Application.Current;
 
-                        switch (((TextBlock)ThemesCombobox.SelectedItem).Text)
+                        var blackHoleThemeTextKey = (string)TryFindResource(TextResourcesKeys.BlackHoleThemeTextKey);
+                        var whiteHoleThemeTextKey = (string)TryFindResource(TextResourcesKeys.WhiteHoleThemeTextKey);
+
+                        if (((TextBlock)ThemesCombobox.SelectedItem).Text == blackHoleThemeTextKey)
                         {
-                            case "Black hole":
-                                app.ChangeTheme(ThemeResourceDictionariesUri.BlackHoleThemeUri);
-                                break;
-                            case "White hole":
-                                app.ChangeTheme(ThemeResourceDictionariesUri.WhiteHoleThemeUri);
-                                break;
+                            app.ChangeTheme(ThemeResourceDictionariesUri.BlackHoleThemeUri);
+                        }
+                        else if (((TextBlock)ThemesCombobox.SelectedItem).Text == whiteHoleThemeTextKey)
+                        {
+                            app.ChangeTheme(ThemeResourceDictionariesUri.WhiteHoleThemeUri);
                         }
                     })
                     .DisposeWith(disposables);

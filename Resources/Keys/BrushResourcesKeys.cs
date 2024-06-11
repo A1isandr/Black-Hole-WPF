@@ -78,6 +78,19 @@
         public const string BlackHoleBrushKey = "BlackHoleBrush";
 
         #endregion
+
+        #region Particle
+
+        public const string ParticleBrushKey = "ParticleBrush";
+        public const string ParticleBorderBrushKey = "ParticleBorderBrush";
+
+        #endregion
+
+        #region Particle History
+
+        public const string ParticleHistoryBrushKey = "ParticleHistoryBrush";
+
+        #endregion
     }
 
     internal struct LinearGradientBrushResourcesKeys

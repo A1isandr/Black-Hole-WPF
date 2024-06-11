@@ -1,6 +1,6 @@
 ﻿namespace Black_Hole.Resources.Keys
 {
-    internal class TextResourcesKeys
+    internal struct TextResourcesKeys
     {
         #region Dashboard
 
@@ -32,6 +32,13 @@
         public const string SettingsDeltaTimeToolTipTextKey = "SettingsDeltaTimeToolTipText";
         public const string SettingsThemeTextKey = "SettingsThemeText";
         public const string SettingsLanguageTextKey = "SettingsLanguageText";
+
+        #endregion
+
+        #region Themes
+
+        public const string BlackHoleThemeTextKey = "BlackHoleThemeText";
+        public const string WhiteHoleThemeTextKey = "WhiteHoleThemeText";
 
         #endregion
     }

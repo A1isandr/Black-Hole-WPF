@@ -23,4 +23,7 @@
     <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsDeltaTimeToolTipTextKey}">Промежуток времени</system:String>
     <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsThemeTextKey}">Тема</system:String>
     <system:String x:Key="{x:Static keys:TextResourcesKeys.SettingsLanguageTextKey}">Язык</system:String>
+
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.BlackHoleThemeTextKey}">Черная дыра</system:String>
+    <system:String x:Key="{x:Static keys:TextResourcesKeys.WhiteHoleThemeTextKey}">Белая дыра</system:String>
 </ResourceDictionary>

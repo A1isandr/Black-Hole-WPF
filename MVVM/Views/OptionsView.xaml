@@ -89,7 +89,7 @@
             <DropShadowEffect
                 ShadowDepth="0"
                 BlurRadius="50"
-                Color="Black"
+                Color="{DynamicResource {x:Static keys:ColorResourcesKeys.OtherShadowsColorKey}}"
                 Opacity="0.5"/>
         </Border.Effect>
 
@@ -170,10 +170,10 @@
                               SelectedIndex="0">
 
                         <TextBlock
-                            Text="Black hole"/>
+                            Text="{DynamicResource {x:Static keys:TextResourcesKeys.BlackHoleThemeTextKey}}"/>
 
                         <TextBlock
-                            Text="White hole"/>
+                            Text="{DynamicResource {x:Static keys:TextResourcesKeys.WhiteHoleThemeTextKey}}"/>
                     </ComboBox>
                 </StackPanel>
             </Border>
